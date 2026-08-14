@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Your Zipsight Lab Report</title>
+<meta name="description" content="A visual field guide to a Zipsight Lab report — every section shown the way it looks in the real thing, what it means, and how to use it.">
+<meta name="theme-color" content="#0B1B2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D5AFE'/%3E%3Cpath d='M16 5.5c-3.7 0-6.7 3-6.7 6.7C9.3 16.7 16 25 16 25s6.7-8.3 6.7-12.8C22.7 8.5 19.7 5.5 16 5.5z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1B2E;--ink-2:#081420;--primary:#3D5AFE;--primary-600:#2E45D8;
+  --go:#22C55E;--go-600:#16A34A;--amber:#F59E0B;--red:#EF4444;
+  --bg:#FFFFFF;--bg-soft:#F5F7FC;--bg-softer:#EAEFFA;--line:#E1E7F2;
+  --text:#0B1B2E;--muted:#5A6B84;--muted-2:#8A97AC;
+  --fh:'Sora',system-ui,sans-serif;--fb:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);color:var(--text);background:var(--bg-soft);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--fh);letter-spacing:-.02em;line-height:1.14}
+a{color:var(--primary);text-decoration:none}
+.doc{max-width:840px;margin:0 auto;background:#fff;box-shadow:0 20px 60px rgba(11,27,46,.1)}
+
+/* cover */
+.cover{background:radial-gradient(640px 340px at 84% -10%,rgba(34,197,94,.2),transparent 60%),linear-gradient(160deg,var(--ink),var(--ink-2));color:#fff;padding:44px 52px 40px}
+.brand{display:flex;align-items:center;gap:.55rem;font-family:var(--fh);font-weight:700;font-size:1.08rem}
+.brand small{display:block;font-family:var(--fb);font-weight:500;font-size:.62rem;letter-spacing:.05em;color:#9fb0cc;margin-top:-2px}
+.cover .kick{font-family:var(--fh);font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#8fb0ff;margin-top:30px}
+.cover h1{color:#fff;font-size:2.4rem;font-weight:800;margin:.4rem 0 .3rem}
+.cover .sub{color:#c7d4e6;font-size:1.05rem;max-width:540px}
+/* $80k gauge */
+.gauge{margin:26px 0 4px}
+.gauge-cap{display:flex;justify-content:space-between;font-size:.74rem;font-weight:600;color:#9fb0cc;margin-bottom:6px;font-family:var(--fh);letter-spacing:.02em}
+.gauge-track{display:flex;height:52px;border-radius:11px;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.gz{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 18px;font-family:var(--fh);font-weight:800;color:#fff;font-size:1.05rem}
+.gz span{font-family:var(--fb);font-weight:500;font-size:.72rem;opacity:.9}
+.gz.no{background:linear-gradient(90deg,#dc2626,#f05252);align-items:flex-start}
+.gz.go{background:linear-gradient(90deg,#1fb257,#22C55E);align-items:flex-end;text-align:right}
+.gauge-mark{position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;background:#fff;transform:translateX(-1px)}
+.gauge-flag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:var(--ink);font-family:var(--fh);font-weight:800;font-size:.82rem;padding:.28rem .6rem;border-radius:7px;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.why{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;margin-top:16px}
+.why b{color:#fff;font-family:var(--fh)}
+.why p{color:#c7d4e6;font-size:.92rem;margin-top:.15rem}
+
+/* habit chips */
+.habits{display:flex;gap:10px;padding:22px 52px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.habit{flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.habit .hi{width:26px;height:26px;flex:none;border-radius:7px;background:var(--bg-softer);display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.habit b{font-family:var(--fh);font-size:.86rem;display:block}
+.habit span{font-size:.8rem;color:var(--muted)}
+
+/* section cards */
+.cards{padding:26px 52px 10px}
+.intro-line{font-family:var(--fh);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:4px}
+.intro-sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px;background:#fff}
+.card-h{display:flex;align-items:center;gap:.6rem;margin-bottom:14px}
+.card-h .ic{width:34px;height:34px;flex:none;border-radius:9px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff}
+.card-h .num{font-family:var(--fh);font-weight:800;color:var(--muted-2);font-size:.9rem}
+.card-h h3{font-size:1.12rem;flex:1}
+.tag{font-family:var(--fh);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);font-weight:600;background:var(--bg-softer);padding:.16rem .5rem;border-radius:5px}
+.card-body{display:grid;grid-template-columns:.92fr 1.08fr;gap:20px;align-items:center}
+.viz{background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:14px}
+.viz .vlabel{font-family:var(--fh);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);font-weight:600;margin-bottom:9px}
+.lines{display:grid;gap:9px}
+.ln{font-size:.9rem;color:var(--text);display:flex;gap:8px;align-items:baseline}
+.ln em{font-family:var(--fh);font-style:normal;font-weight:700;font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;padding:.16rem .42rem;border-radius:5px;flex:none;min-width:74px;text-align:center}
+.ln.read em{background:var(--bg-softer);color:var(--primary-600)}
+.ln.use em{background:#DCFCE7;color:var(--go-600)}
+.ln.dont em{background:#FEF3C7;color:#B45309}
+
+/* ---- report-matching components (same look as the real report) ---- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+.tile .k{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+.tile .v{font-family:var(--fh);font-weight:800;font-size:1.2rem;color:var(--ink);margin-top:1px;letter-spacing:-.02em}
+.tile .v.up{color:var(--go-600)}.tile .v.dn{color:var(--red)}
+.tile .n{font-size:.66rem;color:var(--muted-2)}
+table.rep{width:100%;border-collapse:collapse;font-size:.8rem}
+table.rep th{font-family:var(--fh);font-size:.58rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:left;padding:0 6px 5px;font-weight:600}
+table.rep td{padding:5px 6px;border-top:1px solid var(--line)}
+table.rep td.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--fh);font-weight:700}
+.pill{display:inline-block;font-family:var(--fh);font-weight:700;font-size:.62rem;padding:.1rem .4rem;border-radius:5px}
+.pill.go{background:#DCFCE7;color:#15803D}.pill.no{background:#FEE2E2;color:#B91C1C}
+.scan-note{font-size:.66rem;color:var(--muted-2);font-family:var(--fh);font-weight:600;margin-top:7px}
+/* funnel (kept — with dollar values, gradient like the report) */
+.funnel{display:grid;gap:6px}
+.frow{display:flex;align-items:center;gap:8px}
+.fbar{height:26px;min-width:78px;border-radius:6px;background:linear-gradient(90deg,var(--primary),var(--go));display:flex;align-items:center;padding:0 10px;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);flex:none}
+.fbar span{font-family:var(--fh);font-weight:700;font-size:.68rem;white-space:nowrap}
+.frow .fval{font-family:var(--fh);font-weight:700;font-size:.72rem;color:var(--ink)}
+.frow .fnote{font-size:.66rem;color:var(--muted-2)}
+/* scenario bars with values + $80k line */
+.scen{display:flex;align-items:flex-end;gap:14px;height:112px;position:relative;padding-top:6px}
+.sbar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.sbar i{width:100%;border-radius:6px 6px 0 0}
+.sbar:nth-child(1) i{background:#93a5f7}.sbar:nth-child(2) i{background:var(--primary)}.sbar:nth-child(3) i{background:var(--go)}
+.sbar .sv{font-family:var(--fh);font-weight:700;font-size:.66rem;color:var(--ink);margin-bottom:3px}
+.sbar .sn{font-family:var(--fh);font-weight:600;font-size:.64rem;color:var(--muted);margin-top:4px}
+.scen-line{position:absolute;left:0;right:0;bottom:50%;border-top:2px dashed var(--red)}
+.scen-line b{position:absolute;right:0;top:-8px;background:var(--bg-soft);padding:0 4px;font-family:var(--fh);font-weight:700;font-size:.6rem;color:var(--red)}
+/* verdict banner (same gradient as the report) */
+.vbanner{background:linear-gradient(135deg,var(--go),var(--go-600));border-radius:10px;padding:13px 16px;color:#fff}
+.vbanner .vb{font-family:var(--fh);font-weight:800;font-size:1.25rem;line-height:1.05}
+.vbanner .vs{font-size:.74rem;opacity:.94;margin-top:2px}
+/* playbook chips */
+.pbchips{display:flex;flex-wrap:wrap;gap:6px}
+.pb{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:6px 10px;font-size:.78rem;font-weight:600;color:var(--ink)}
+.pb svg{color:var(--primary)}
+
+/* sources strip */
+.strip{margin:6px 52px 0;background:var(--ink);color:#fff;border-radius:12px;padding:16px 20px;display:flex;gap:14px;align-items:center}
+.strip .si{width:32px;height:32px;flex:none;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#8fb0ff}
+.strip b{font-family:var(--fh);font-size:.92rem;display:block}
+.strip span{color:#c7d4e6;font-size:.84rem}
+
+/* "where to look" index */
+.where{padding:26px 52px 6px}
+.where h3{font-size:1.12rem;text-align:center;margin-bottom:4px}
+.where .wsub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.wrow{display:flex;gap:12px;align-items:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+.wrow .wi{width:36px;height:36px;flex:none;border-radius:9px;background:var(--bg-softer);display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.wrow b{font-family:var(--fh);font-size:.92rem;display:block}
+.wrow span{font-size:.8rem;color:var(--muted)}
+.wrow span u{text-decoration:none;color:var(--primary-600);font-weight:600}
+
+/* CTA footer */
+.cta{margin:26px 52px 0;background:linear-gradient(150deg,var(--ink),var(--ink-2));color:#fff;border-radius:16px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta .ct{max-width:420px}
+.cta h4{color:#fff;font-size:1.15rem;margin-bottom:.25rem}
+.cta p{color:#c7d4e6;font-size:.88rem}
+.cta .btns{display:flex;gap:10px;flex-wrap:wrap}
+.cta a.b1{background:var(--go);color:#052e16;font-family:var(--fh);font-weight:700;font-size:.9rem;padding:.7rem 1.2rem;border-radius:999px}
+.cta a.b2{color:#c7d4e6;font-size:.86rem;font-weight:600;align-self:center}
+.disc{color:var(--muted-2);font-size:.76rem;padding:20px 52px 34px}
+@media print{
+  body{background:#fff}.doc{box-shadow:none;max-width:none}
+  .card,.wrow,.strip,.habit,.cta{break-inside:avoid}
+  .cover{padding:52px 56px 44px}
+}
+@media(max-width:680px){
+  .cover,.habits,.cards,.where,.disc{padding-left:24px;padding-right:24px}
+  .strip,.cta{margin-left:24px;margin-right:24px}
+  .card-body,.wgrid{grid-template-columns:1fr}.cover h1{font-size:1.9rem}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- COVER + HERO GAUGE -->
+  <div class="cover">
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#3D5AFE"/><path d="M16 5.5c-3.7 0-6.7 3-6.7 6.7C9.3 16.7 16 25 16 25s6.7-8.3 6.7-12.8C22.7 8.5 19.7 5.5 16 5.5z" fill="#fff"/><rect x="12.4" y="11.3" width="2.1" height="5.2" rx="1" fill="#3D5AFE"/><rect x="15.9" y="9.2" width="2.1" height="7.3" rx="1" fill="#22C55E"/><rect x="19.4" y="12.6" width="2.1" height="3.9" rx="1" fill="#3D5AFE"/></svg>
+      <div>Zipsight Lab<small>a Geomarket Insights company</small></div>
+    </div>
+    <div class="kick">Your report, at a glance</div>
+    <h1>How to read your report</h1>
+    <p class="sub">Every section, shown the way it looks in the real report — what it means, and what to do with it.</p>
+    <div class="gauge">
+      <div class="gauge-cap"><span>$0</span><span>THE ONE QUESTION EVERY REPORT ANSWERS</span><span>$160k+</span></div>
+      <div class="gauge-track">
+        <div class="gz no">NO&#8209;GO<span>owner take under $80k</span></div>
+        <div class="gz go">GO<span>owner take clears $80k</span></div>
+        <div class="gauge-mark"></div>
+        <div class="gauge-flag">$80,000 / yr, after tax</div>
+      </div>
+      <div class="why">
+        <b>Why $80,000?</b>
+        <p>A general manager you'd hire to run the place earns about <b>$75,000</b>. If you're going to do that job yourself, the business should pay <b>you</b> more than the manager you'd otherwise pay — and since the math is after income tax, $80k is real take-home. Clear it and running your own business is worth the effort. Fall short, and you've bought yourself a job.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HABITS -->
+  <div class="habits">
+    <div class="habit"><div class="hi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div><div><b>Verdict first, then why</b><span>the sections are the reasoning behind it</span></div></div>
+    <div class="habit"><div class="hi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>Fact ≠ estimate ≠ assumption</b><span>all three are labeled, so you can challenge them</span></div></div>
+    <div class="habit"><div class="hi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div><div><b>A floor, not a ceiling</b><span>the market sets the floor; your hustle does the rest</span></div></div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="intro-line">What your report shows you 👇</div>
+    <div class="intro-sub">Skim the picture, read three lines, move on.</div>
+
+    <!-- 1 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="num">1</span><h3>Who's in this town</h3><span class="tag">Demographics</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">Your trade area vs the US</div><div class="tiles"><div class="tile"><div class="k">Income vs US</div><div class="v up">+43%</div></div><div class="tile"><div class="k">Households</div><div class="v">2,236</div></div><div class="tile"><div class="k">Median age</div><div class="v">43</div></div><div class="tile"><div class="k">Home value vs US</div><div class="v dn">−14%</div></div></div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>Who's around you, and what they can afford to spend.</div><div class="ln use"><em>Use it to</em>Set prices to local income, and match your concept to who's here.</div><div class="ln dont"><em>Don't</em>A wealthy area isn't automatically a big one — a small town is still a small market.</div></div>
+      </div></div>
+
+    <!-- 2 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="num">2</span><h3>What can actually pay you</h3><span class="tag">The Town Scan</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">All 35 types, ranked by owner take</div><table class="rep"><thead><tr><th>#</th><th>Business</th><th>Verdict</th><th style="text-align:right">Owner take</th></tr></thead><tbody>
+          <tr><td>1</td><td>Restaurant</td><td><span class="pill go">GO</span></td><td class="n">$168,924</td></tr>
+          <tr><td>3</td><td>Pizzeria</td><td><span class="pill go">GO</span></td><td class="n">$103,738</td></tr>
+          <tr><td>15</td><td>Coffee shop</td><td><span class="pill no">NO-GO</span></td><td class="n">$56,809</td></tr>
+          <tr><td>35</td><td>Bookstore</td><td><span class="pill no">NO-GO</span></td><td class="n">$3,267</td></tr>
+        </tbody></table><div class="scan-note">7 of 35 clear the line for this ZIP</div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>Which businesses this town can actually pay an owner a living for.</div><div class="ln use"><em>Use it to</em>Build your shortlist from the GO list, strongest earners first.</div><div class="ln dont"><em>Don't</em>A GO means the odds are in your favor — not that success is guaranteed.</div></div>
+      </div></div>
+
+    <!-- 3 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18M6 8h12M9 12h6M11 16h2"/></svg></div><span class="num">3</span><h3>How demand becomes money</h3><span class="tag">The Funnel</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">Total spending → what you'd earn</div><div class="funnel">
+          <div class="frow"><div class="fbar" style="width:66%"><span>TAM</span></div><span class="fval">$12.0M</span><span class="fnote">all local spending</span></div>
+          <div class="frow"><div class="fbar" style="width:48%"><span>SAM</span></div><span class="fval">$2.8M</span><span class="fnote">your type's slice</span></div>
+          <div class="frow"><div class="fbar" style="width:36%"><span>Accessible</span></div><span class="fval">$1.75M</span><span class="fnote">← your target</span></div>
+          <div class="frow"><div class="fbar" style="width:24%"><span>Captured</span></div><span class="fval">$699k</span><span class="fnote">you'd earn</span></div>
+        </div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>How all the money in town narrows down to what you'd realistically earn.</div><div class="ln use"><em>Use it to</em>Treat the "Accessible" figure as your true target market — not the whole pie.</div><div class="ln dont"><em>Don't</em>Plan around the whole market; you'll capture the accessible slice, not all of it.</div></div>
+      </div></div>
+
+    <!-- 4 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><span class="num">4</span><h3>Three ways it could go</h3><span class="tag">Scenarios</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">Owner take-home, three cases</div><div class="scen"><div class="sbar"><span class="sv">$67k</span><i style="height:42%"></i><span class="sn">Cautious</span></div><div class="sbar"><span class="sv">$107k</span><i style="height:67%"></i><span class="sn">Likely</span></div><div class="sbar"><span class="sv">$161k</span><i style="height:100%"></i><span class="sn">Strong</span></div><div class="scen-line"><b>$80k line</b></div></div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>A cautious, a likely, and a strong version of how much you capture.</div><div class="ln use"><em>Use it to</em>Budget for the cautious case; aim for the likely one.</div><div class="ln dont"><em>Don't</em>If even the strong case falls short of the line, it's a no — walk away.</div></div>
+      </div></div>
+
+    <!-- 5 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></div><span class="num">5</span><h3>The owner verdict</h3><span class="tag">The $80k test</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">The bottom line</div><div class="vbanner"><div class="vb">GO — $103,738 / yr</div><div class="vs">expected owner take-home, after tax · clears in 65% of cases</div></div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>What actually lands in your pocket each year, after tax, vs your target.</div><div class="ln use"><em>Use it to</em>This is your single go/no-go — the whole report in one number.</div><div class="ln dont"><em>Don't</em>Remember it's your established year, not year one — the start is always leaner.</div></div>
+      </div></div>
+
+    <!-- 6 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><span class="num">6</span><h3>The money lines</h3><span class="tag">Financing &amp; budget</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">The numbers for the bank &amp; the budget</div><div class="tiles"><div class="tile"><div class="k">Revenue to clear target</div><div class="v">$521,853</div></div><div class="tile"><div class="k">Safe loan ceiling</div><div class="v">$456,383</div></div><div class="tile"><div class="k">Year-1 owner take</div><div class="v">$53,542</div></div><div class="tile"><div class="k">Typical startup</div><div class="v">$100–400k</div></div></div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>The numbers you'll need for the bank, the lease, and your budget.</div><div class="ln use"><em>Use it to</em>Walk the safe loan ceiling into any financing conversation.</div><div class="ln dont"><em>Don't</em>If it costs more to open than you can safely borrow, close that gap before you start.</div></div>
+      </div></div>
+
+    <!-- 7 -->
+    <div class="card"><div class="card-h"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M9 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/></svg></div><span class="num">7</span><h3>What it takes to run it</h3><span class="tag">The Playbook</span></div>
+      <div class="card-body">
+        <div class="viz"><div class="vlabel">The operational reality</div><div class="pbchips"><span class="pb"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>Licenses</span><span class="pb"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.9V17L12 22 3 17V7z"/></svg>Setup</span><span class="pb"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>55–70 hrs/wk</span><span class="pb"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Staffing</span></div></div>
+        <div class="lines"><div class="ln read"><em>Reads as</em>What running this actually takes — licenses, setup, hours, and staff.</div><div class="ln use"><em>Use it to</em>Your pre-opening checklist, and an honest gut-check on the effort.</div><div class="ln dont"><em>Don't</em>Good money can still be a bad fit — check the hours and skills before you commit.</div></div>
+      </div></div>
+  </div>
+
+  <!-- SOURCES STRIP -->
+  <div class="strip">
+    <div class="si"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+    <div><b>Every report shows its sources &amp; its assumptions.</b><span>Census vintage, spending benchmarks, cost ratios, competitor count, tax rate — all printed. Know a number that's different for you? That's the one to challenge, or send us to re-run.</span></div>
+  </div>
+
+  <!-- WHERE TO LOOK -->
+  <div class="where">
+    <h3>Reading it for a specific decision?</h3>
+    <p class="wsub">Here's where to look first — you don't have to read every section.</p>
+    <div class="wgrid">
+      <div class="wrow"><div class="wi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><div><b>Opening a business</b><span>Start with the <u>Town Scan</u> and the <u>owner verdict</u>.</span></div></div>
+      <div class="wrow"><div class="wi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div><div><b>Growing the one you have</b><span>Start with the <u>funnel</u> and the <u>scenarios</u>.</span></div></div>
+      <div class="wrow"><div class="wi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div><div><b>Expanding to a new spot</b><span>Run a fresh report there; check the <u>loan ceiling</u>.</span></div></div>
+      <div class="wrow"><div class="wi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></div><div><b>Closing or selling</b><span>Watch the <u>owner verdict</u> — is it still paying you?</span></div></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="ct"><h4>Ready to run one for your own ZIP?</h4><p>Same report, same math, built for your address. Useful, or your money back.</p></div>
+    <div class="btns"><a class="b1" href="https://www.zipsightlab.com">Get your report →</a><a class="b2" href="https://www.geomarketinsights.com">Big call? Talk to Geomarket Insights →</a></div>
+  </div>
+
+  <div class="disc">Figures shown are the real Zipsight Lab example for Felton, PA (ZIP 17322), from US Census ACS + BLS Consumer Expenditure Survey + published industry ratios. Estimates to inform a decision — not financial advice or a formal appraisal. © <span id="yr">2026</span> Zipsight Lab, a Geomarket Insights company.</div>
+</div>
+<script>try{document.getElementById('yr').textContent=new Date().getFullYear();}catch(e){}</script>
+</body>
+</html>

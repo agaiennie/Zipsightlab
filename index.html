@@ -1,0 +1,3419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zipsight Lab — Instant, self-serve market reports for small-business owners</title>
+<meta name="description" content="Enter your ZIP and business format; get a data-backed market report in your browser instantly — no waiting, no email, no human. Deterministic from US Census + BLS. A Geomarket Insights company.">
+<meta name="theme-color" content="#0B1B2E">
+<meta property="og:title" content="Zipsight Lab — Instant market reports">
+<meta property="og:description" content="Real data, plain answers, generated on the spot. Before you bet the business.">
+<meta property="og:url" content="https://www.zipsightlab.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D5AFE'/%3E%3Cpath d='M16 5.5c-3.7 0-6.7 3-6.7 6.7C9.3 16.7 16 25 16 25s6.7-8.3 6.7-12.8C22.7 8.5 19.7 5.5 16 5.5z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>/* Page chrome + generator modal + paywall + print. Report component styles live in css-report.css. */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 22px}
+.eyebrow{font-family:var(--fh);font-weight:600;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.section{padding:80px 0}
+.center{text-align:center}.muted{color:var(--muted)}
+.lead{font-size:1.16rem;color:var(--muted);max-width:660px}
+.mx-auto{margin-left:auto;margin-right:auto}
+.section-head{margin-bottom:40px}.section-head h2{font-size:2.1rem;margin-bottom:.5rem}
+h1,h2,h3,h4{font-family:var(--fh);letter-spacing:-.02em;line-height:1.14;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;justify-content:center;font-family:var(--fh);font-weight:600;font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.6px solid transparent;cursor:pointer;transition:.17s;white-space:nowrap}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-600);transform:translateY(-2px)}
+.btn-go{background:var(--go);color:#052e16}.btn-go:hover{background:var(--go-600);color:#fff;transform:translateY(-2px)}
+.btn-ghost-light{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3);color:#fff}.btn-ghost-light:hover{background:rgba(255,255,255,.14)}
+/* header */
+.header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:700;font-size:1.14rem;color:var(--ink)}
+.brand .logo{width:34px;height:34px;flex:none}
+.brand small{display:block;font-family:var(--fb);font-weight:500;font-size:.63rem;letter-spacing:.04em;color:var(--muted-2);margin-top:-2px}
+.nav-links{display:flex;gap:.2rem}
+.nav-links a{padding:.55rem .8rem;border-radius:999px;font-weight:500;font-size:.94rem;color:var(--muted)}
+.nav-links a:hover{color:var(--ink);background:var(--bg-soft)}
+/* hero */
+.hero{position:relative;background:radial-gradient(1100px 600px at 88% -10%,rgba(34,197,94,.2),transparent 58%),radial-gradient(900px 520px at 0% 0%,rgba(61,90,254,.42),transparent 55%),linear-gradient(160deg,var(--ink),var(--ink-2));color:#fff;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(720px 420px at 72% 18%,#000,transparent 76%)}
+.hero .container{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding:80px 0 88px}
+.parent-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#cdd8ec;font-size:.8rem;font-weight:600;padding:.34rem .8rem;border-radius:999px;margin-bottom:1.2rem}
+.hero h1{color:#fff;font-size:3rem;font-weight:800;margin-bottom:1rem}
+.hero h1 .grad{background:linear-gradient(100deg,#6fe39a,#8fb0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:1.2rem;color:#c7d4e6;max-width:560px;margin-bottom:1.8rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.9rem}
+.hero-badges{display:flex;gap:1.3rem;flex-wrap:wrap;color:#a9bad2;font-size:.9rem;font-weight:500}
+.hero-badges span{display:flex;align-items:center;gap:.45rem}.hero-badges svg{color:var(--go)}
+.hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:20px;backdrop-filter:blur(6px)}
+.hc-tag{font-family:var(--fh);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#9fb0cc;margin-bottom:12px}
+.hc-verdict{display:flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--go),var(--go-600));border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.hc-verdict .dot{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:800}
+.hc-verdict b{color:#fff;font-family:var(--fh);font-size:1.02rem}.hc-verdict span{display:block;color:rgba(255,255,255,.9);font-size:.8rem}
+.hc-rows{display:grid;gap:8px}
+.hc-row{display:flex;justify-content:space-between;background:rgba(255,255,255,.05);border-radius:9px;padding:9px 12px;font-size:.88rem;color:#d6e0ef}
+.hc-row b{color:#fff;font-family:var(--fh)}
+.hc-foot{margin-top:12px;font-size:.72rem;color:#8fa0bb;text-align:center}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:26px}
+.step .n{width:38px;height:38px;border-radius:10px;background:var(--primary);color:#fff;font-family:var(--fh);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:1.12rem;margin-bottom:.4rem}.step p{color:var(--muted);font-size:.96rem}
+/* report cards */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rcard{position:relative;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:24px;transition:.18s}
+.rcard:hover{border-color:var(--primary);box-shadow:0 10px 34px rgba(11,27,46,.12);transform:translateY(-3px)}
+.rcard.featured{border-color:var(--primary);box-shadow:0 0 0 3px rgba(61,90,254,.12)}
+.rcard .badge{position:absolute;top:-11px;right:18px;background:var(--primary);color:#fff;font-family:var(--fh);font-weight:700;font-size:.7rem;padding:.24rem .66rem;border-radius:999px}
+.rcard .badge.go{background:var(--go);color:#052e16}
+.rcard .kind{font-family:var(--fh);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+.rcard h3{font-size:1.2rem;margin:.35rem 0 .3rem}
+.rcard .price{font-family:var(--fh);font-weight:800;font-size:1.9rem;color:var(--ink)}
+.rcard .price .u{font-size:.82rem;font-weight:500;color:var(--muted-2)}
+.rcard p.d{color:var(--muted);font-size:.93rem;margin:.7rem 0 .9rem}
+.rcard .needs{font-size:.78rem;color:var(--muted-2);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.rcard .go-btn{margin-top:auto}
+/* human band */
+.human{background:linear-gradient(150deg,var(--ink),var(--ink-2));color:#fff;border-radius:22px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.human h2{color:#fff;font-size:1.85rem;margin-bottom:.6rem}.human p{color:#c7d4e6;margin-bottom:.6rem}
+.human .tier{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 20px}
+.human .tier .t-top{display:flex;justify-content:space-between;align-items:baseline}
+.human .tier b{font-family:var(--fh);color:#fff}.human .tier .tp{font-family:var(--fh);font-weight:700;color:#8fb0ff}
+.human .tier span{font-size:.86rem;color:#b9c6dc}
+/* guarantee + faq + footer */
+.guarantee{background:var(--bg-softer);border-radius:22px;padding:44px;text-align:center}
+.guarantee .gi{width:56px;height:56px;border-radius:14px;background:var(--go);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.guarantee h2{font-size:1.8rem;margin-bottom:.6rem}
+.faq{max-width:780px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:11px;padding:16px 20px;margin-bottom:12px;background:#fff}
+.faq summary{cursor:pointer;font-family:var(--fh);font-weight:600;font-size:1.02rem;color:var(--ink);list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq details[open] summary{color:var(--primary)}.faq p{color:var(--muted);margin-top:.7rem;font-size:.96rem}
+.footer{background:var(--ink);color:#a9bad2;padding:50px 0 28px}
+.footer .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;margin-bottom:30px}
+.footer h4{color:#fff;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+.footer a{color:#a9bad2;font-size:.92rem;display:block;padding:.28rem 0}.footer a:hover{color:#fff}
+.footer .brand{color:#fff;margin-bottom:.8rem}.footer .brand small{color:#7f90ab}
+.footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.83rem;color:#7f90ab}
+
+/* ===== GENERATOR MODAL ===== */
+.zl-modal{position:fixed;inset:0;z-index:200;display:none;background:rgba(8,20,32,.62);backdrop-filter:blur(3px);padding:24px}
+.zl-modal.open{display:flex;align-items:flex-start;justify-content:center}
+.zl-panel{background:#fff;border-radius:20px;max-width:820px;width:100%;margin:24px auto;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.4);overflow:hidden}
+.zl-head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid var(--line);flex:none}
+.zl-head .ht{font-family:var(--fh);font-weight:700;font-size:1.15rem;color:var(--ink)}
+.zl-head .hp{font-family:var(--fh);font-weight:800;font-size:1.1rem;color:var(--primary);background:var(--bg-softer);padding:.2rem .7rem;border-radius:999px;margin-left:.5rem}
+.zl-x{background:none;border:none;font-size:1.5rem;color:var(--muted-2);cursor:pointer;line-height:1}
+.zl-body{padding:24px 26px;overflow-y:auto}
+.zl-form label{display:block;font-weight:600;font-size:.85rem;color:var(--ink);margin:.2rem 0 .35rem}
+.zl-form label .hint{display:block;font-weight:400;font-size:.76rem;color:var(--muted-2)}
+.zl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.zl-form input,.zl-form select{width:100%;font-family:var(--fb);font-size:.98rem;padding:.62rem .7rem;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.zl-form input:focus,.zl-form select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(61,90,254,.12)}
+.zl-status{font-size:.82rem;color:var(--muted);margin-top:10px;min-height:1.1em}
+.zl-err{display:none;background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;border-radius:10px;padding:10px 14px;margin-top:12px;font-size:.9rem}
+.zl-err.show{display:block}
+.zl-gen{margin-top:18px}
+/* result + paywall */
+.zl-result{display:none}.zl-result.show{display:block}
+.zl-back{background:none;border:none;color:var(--primary);font-weight:600;cursor:pointer;font-size:.9rem;padding:0;margin-bottom:14px}
+.zl-lockwrap{position:relative}
+.zl-locked{max-height:340px;overflow:hidden;filter:blur(6px);opacity:.55;pointer-events:none;-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.zl-paywall{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px}
+.zl-pw-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 50px rgba(11,27,46,.2);padding:26px 28px;max-width:420px;text-align:center}
+.zl-pw-h{font-family:var(--fh);font-weight:800;font-size:1.25rem;color:var(--ink);margin-bottom:.4rem}
+.zl-pw-p{color:var(--muted);font-size:.94rem;margin-bottom:1rem}
+.zl-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--fh);font-weight:600;font-size:.98rem;padding:.8rem 1.4rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.16s;text-decoration:none}
+.zl-btn-primary{background:var(--primary);color:#fff;width:100%}.zl-btn-primary:hover{background:var(--primary-600)}
+.zl-btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}.zl-btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.zl-reveal{display:block;width:100%;background:none;border:none;color:var(--muted);font-weight:600;cursor:pointer;font-size:.86rem;margin-top:.7rem;text-decoration:underline}
+.zl-pw-note{font-size:.76rem;color:var(--muted-2);margin-top:.8rem}
+.zl-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:20px}
+.zl-detail{margin-top:2px}
+@media(max-width:900px){.hero-grid,.human{grid-template-columns:1fr;gap:32px}.steps,.rgrid,.footer .fgrid{grid-template-columns:1fr}.nav-links{display:none}.zl-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.hero h1{font-size:2.2rem}.section{padding:56px 0}}
+/* print — only the report, only when unlocked */
+@media print{
+  body>.header,body>.hero,body>.section,body>.footer,body>.trust,.zl-head,.zl-back,.zl-actions,.zl-paywall,.zl-lockwrap{display:none!important}
+  .zl-modal{position:static;display:block!important;background:#fff;padding:0}
+  .zl-panel{box-shadow:none;max-height:none;max-width:none;margin:0}
+  .zl-body{overflow:visible;padding:0}
+  .zl-form{display:none!important}
+  .zl-result{display:block!important}
+}
+
+/* Report components — shared by the on-screen report and the downloaded file. */
+:root{
+  --ink:#0B1B2E;--ink-2:#081420;--primary:#3D5AFE;--primary-600:#2E45D8;
+  --go:#22C55E;--go-600:#16A34A;--amber:#F59E0B;--red:#EF4444;
+  --bg-soft:#F5F7FC;--bg-softer:#EAEFFA;--line:#E1E7F2;--muted:#5A6B84;--muted-2:#8A97AC;
+  --fh:'Sora',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --fb:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+.zl-rt{font-family:var(--fh);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);margin:0 0 14px}
+h4.sub{font-family:var(--fh);font-weight:700;font-size:1rem;color:var(--ink);margin:20px 0 8px}
+/* verdict */
+.rv{border-radius:14px;padding:18px 20px;color:#fff;margin:0 0 16px}
+.rv.go{background:linear-gradient(135deg,var(--go),var(--go-600))}
+.rv.no{background:linear-gradient(135deg,#F87171,var(--red))}
+.rv.warn{background:linear-gradient(135deg,#FBBF24,var(--amber))}
+.rv.neutral{background:linear-gradient(135deg,var(--primary),var(--primary-600))}
+.rvb{font-family:var(--fh);font-weight:800;font-size:1.35rem;line-height:1.12;letter-spacing:-.02em}
+.rvs{opacity:.95;margin-top:.35rem;font-size:.96rem}
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.tile{background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.tile .k{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+.tile .v{font-family:var(--fh);font-weight:800;font-size:1.35rem;color:var(--ink);margin-top:.1rem;letter-spacing:-.02em}
+.tile .v.up{color:var(--go-600)}.tile .v.dn{color:var(--red)}
+.tile .n{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+/* callout + source */
+.callout{background:var(--bg-soft);border-left:3px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.callout b{font-family:var(--fh)}
+.srcline{font-size:.8rem;color:var(--muted);margin-top:14px}
+/* funnel */
+.fnl{display:grid;gap:7px;margin:10px 0}
+.fnlrow{display:flex;align-items:center;gap:8px}
+.fbar{height:28px;min-width:88px;border-radius:6px;background:linear-gradient(90deg,var(--primary),var(--go));display:flex;align-items:center;padding:0 10px;color:#fff;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.fbar span{font-family:var(--fh);font-weight:700;font-size:.72rem;white-space:nowrap}
+.fval{font-family:var(--fh);font-weight:700;font-size:.82rem;color:var(--ink)}
+.fnote{font-size:.72rem;color:var(--muted-2)}
+/* table */
+table.rep{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+table.rep th{font-family:var(--fh);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:left;padding:0 8px 6px;font-weight:600}
+table.rep td{padding:7px 8px;border-top:1px solid var(--line)}
+table.rep td.n,table.rep th.n{text-align:right;font-variant-numeric:tabular-nums}
+table.rep tr.is-go{background:rgba(34,197,94,.05)}
+.pill{display:inline-block;font-family:var(--fh);font-weight:700;font-size:.66rem;padding:.12rem .45rem;border-radius:5px}
+.pill.go{background:#DCFCE7;color:#15803D}.pill.no{background:#FEE2E2;color:#B91C1C}
+/* playbook cols */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+.mini h4{font-family:var(--fh);font-size:.92rem;margin-bottom:.4rem;color:var(--ink)}
+.mini ul{list-style:none;display:grid;gap:.35rem;margin:0;padding:0}
+.mini li{font-size:.88rem;color:var(--ink);padding-left:1.1rem;position:relative}
+.mini li:before{content:"›";position:absolute;left:.1rem;color:var(--primary);font-weight:800}
+.mininote{font-size:.82rem;color:var(--muted);margin-top:.6rem}
+/* complete-report sections */
+.csec{border-top:2px solid var(--line);padding-top:20px;margin-top:24px}
+.csec-h{font-family:var(--fh);font-weight:800;font-size:1.2rem;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:.6rem}
+.csec-n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--primary);color:#fff;font-size:.9rem;flex:none}
+/* download-doc wrapper */
+.doc{max-width:820px;margin:0 auto;padding:34px 40px 44px;font-family:var(--fb);color:var(--ink);background:#fff;line-height:1.55}
+.brandbar{display:flex;align-items:center;gap:.5rem;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:20px;font-family:var(--fh)}
+.brandbar b{color:var(--primary)}.brandbar span{color:var(--muted-2);font-size:.82rem;font-family:var(--fb)}
+.disc{color:var(--muted-2);font-size:.78rem;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:560px){.cols2{grid-template-columns:1fr}.doc{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<header class="header"><div class="container nav">
+  <a class="brand" href="#top"><svg class="logo" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#3D5AFE"/><path d="M16 5.5c-3.7 0-6.7 3-6.7 6.7C9.3 16.7 16 25 16 25s6.7-8.3 6.7-12.8C22.7 8.5 19.7 5.5 16 5.5z" fill="#fff"/><rect x="12.4" y="11.3" width="2.1" height="5.2" rx="1" fill="#3D5AFE"/><rect x="15.9" y="9.2" width="2.1" height="7.3" rx="1" fill="#22C55E"/><rect x="19.4" y="12.6" width="2.1" height="3.9" rx="1" fill="#3D5AFE"/></svg><div>Zipsight Lab<small>a Geomarket Insights company</small></div></a>
+  <nav class="nav-links">
+    <a href="#how">How it works</a><a href="example-17322.html">Live example</a><a href="#reports">Reports</a><a href="#human">Need an analyst?</a><a href="#faq">FAQ</a>
+  </nav>
+  <a href="#reports" class="btn btn-go" style="padding:.6rem 1.05rem;font-size:.9rem">Build a report</a>
+</div></header>
+
+<a id="top"></a>
+<section class="hero"><div class="container"><div class="hero-grid">
+  <div>
+    <span class="parent-tag">◆ Powered by the Geomarket Insights engine</span>
+    <h1>Your market report, <span class="grad">generated on the spot</span>.</h1>
+    <p class="sub">Enter your ZIP and pick your business format. Zipsight Lab pulls real government data and builds your report right here in the browser — read it, download it, done. No waiting, no email, no human in the loop.</p>
+    <div class="hero-cta">
+      <a href="#reports" class="btn btn-go">Build my report →</a>
+      <a href="example-17322.html" class="btn btn-ghost-light">See a live example</a>
+    </div>
+    <div class="hero-badges">
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Real Census &amp; BLS data</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Instant, in your browser</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Useful, or your money back</span>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hc-tag">Sample · ZIP 17322 · Quick-service restaurant</div>
+    <div class="hc-verdict"><div class="dot">✓</div><div><b>GO — this location can pay you $103,738</b><span>steady-state owner take-home, after tax</span></div></div>
+    <div class="hc-rows"><div class="hc-row"><span>Revenue you’d need</span><b>$521,853</b></div><div class="hc-row"><span>Spending up for grabs</span><b>$1.75M</b></div><div class="hc-row"><span>Clears the $80k test in</span><b>65% of cases</b></div></div>
+    <div class="hc-foot">Every figure computed from public data. Nothing invented.</div>
+  </div>
+</div></div></section>
+
+<section class="section" id="how"><div class="container">
+  <div class="section-head center"><span class="eyebrow">How it works</span><h2>Three inputs. A real report. Zero waiting.</h2>
+    <p class="lead mx-auto">No consultants, no back-and-forth. The whole thing runs on public data and deterministic math — so it can be instant, and it can be cheap.</p></div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Pick a report &amp; enter your ZIP</h3><p>We pull your trade-area demographics live from the US Census. Choose your business format where the report needs it.</p></div>
+    <div class="step"><div class="n">2</div><h3>The engine builds it</h3><p>The same model our premium consultancy uses runs in your browser — funnel, scenarios, the $80k owner test — in a second.</p></div>
+    <div class="step"><div class="n">3</div><h3>Read it &amp; keep it</h3><p>Your report appears on screen. Download it or save it as a PDF. No inbox, no attachment, no human touching it.</p></div>
+  </div>
+</div></section>
+
+<section class="section" id="reports" style="background:var(--bg-soft)"><div class="container">
+  <div class="section-head center"><span class="eyebrow">Self-serve reports</span><h2>Pick the answer you need</h2>
+    <p class="lead mx-auto">Each report answers one real question and generates instantly from your inputs. Backed by one promise: <strong>if it isn’t useful, it’s free.</strong></p></div>
+  <div class="rgrid"><div class="rcard">
+    <span class="kind">Instant · data</span><h3>Know Your Customers</h3>
+    <div class="price">$29 <span class="u">per ZIP</span></div>
+    <p class="d">Who lives in your trade area and what they can spend — the full demographic picture vs national.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Enter a ZIP</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('know-your-customers')">Build it →</button></div></div>
+<div class="rcard">
+    <span class="kind">Instant · data</span><h3>Competition Report</h3>
+    <div class="price">$19 <span class="u">per report</span></div>
+    <p class="d">How crowded your market is for a given format, and how much demand is still up for grabs.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> ZIP + business format</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('competition')">Build it →</button></div></div>
+<div class="rcard"><span class="badge go">Popular</span>
+    <span class="kind">Instant · data</span><h3>The Town Scan</h3>
+    <div class="price">$99 <span class="u">per ZIP</span></div>
+    <p class="d">All 46 business formats scored GO or NO-GO for your ZIP, ranked by what an owner could take home.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Enter a ZIP</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('town-scan')">Build it →</button></div></div>
+<div class="rcard">
+    <span class="kind">Instant · data</span><h3>The Launch Playbook</h3>
+    <div class="price">$79 <span class="u">per format</span></div>
+    <p class="d">How to open and run it: scorecard, licenses, setup, staffing, and the numbers to watch.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> ZIP + business format</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('launch-playbook')">Build it →</button></div></div>
+<div class="rcard featured"><span class="badge">Most complete</span>
+    <span class="kind">Instant · verdict</span><h3>The Decision Report</h3>
+    <div class="price">$149 <span class="u">one decision</span></div>
+    <p class="d">The full financial verdict — market funnel, three scenarios, the $80k test, and the money lines.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> ZIP + business format</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('decision')">Build it →</button></div></div>
+<div class="rcard"><span class="badge">Everything</span>
+    <span class="kind">All-in-one</span><h3>The Complete Report</h3>
+    <div class="price">$299 <span class="u">one document</span></div>
+    <p class="d">Customers + competition + what-fits + the verdict + the playbook, fused into a single report.</p>
+    <div class="needs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> ZIP + business format</div>
+    <div class="go-btn"><button class="btn btn-primary" style="width:100%" onclick="ZL_open('complete')">Build it →</button></div></div></div>
+  <p class="center muted" style="margin-top:26px;font-size:.9rem">Every report is generated automatically in your browser from public data — no waiting on a human, nothing emailed.</p>
+</div></section>
+
+<section class="section" id="human"><div class="container">
+  <div class="human">
+    <div><span class="eyebrow" style="color:#8fb0ff">When the stakes are higher</span>
+      <h2>Some calls still deserve a human.</h2>
+      <p>Zipsight Lab is built for fast, self-serve answers. For a bet you can’t afford to get wrong — a second location, a major price change — our parent company <strong style="color:#fff">Geomarket Insights</strong> takes the same data and adds an analyst’s judgment, hand-built for your decision.</p>
+      <a href="https://www.geomarketinsights.com" class="btn btn-go" style="margin-top:.6rem">Explore Geomarket Insights →</a></div>
+    <div><div class="tier"><div class="t-top"><b>Big-Decision Deep-Dive</b><span class="tp">$399</span></div><span>Bespoke, analyst-built analysis for a high-stakes call. The consultant-in-your-corner report.</span></div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container"><div class="guarantee">
+  <div class="gi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></div>
+  <h2>Useful, or it’s free.</h2>
+  <p class="lead mx-auto">If a report doesn’t tell you something genuinely useful about your business, tell us and we’ll refund it. Your real fear is wasting money — so we take that risk off the table.</p>
+</div></div></section>
+
+<section class="section" id="faq" style="background:var(--bg-soft)"><div class="container">
+  <div class="section-head center"><span class="eyebrow">Questions</span><h2>The honest answers</h2></div>
+  <div class="faq">
+    <details open><summary>How do I get my report — and do I have to wait?</summary><p>No waiting. You enter your ZIP (and pick a business format where needed), and the report is built right there in your browser and shown on screen. You can download it or save it as a PDF. Nothing is emailed, and no person processes anything.</p></details>
+    <details><summary>Where does the data come from — did you make it up?</summary><p>No. Demographics come live from the US Census (American Community Survey); spending patterns from the BLS Consumer Expenditure Survey; cost structures from published industry benchmarks. Every report prints its sources and its assumptions.</p></details>
+    <details><summary>Why do I pick a “format” instead of my exact business?</summary><p>Our data models cost structure and demand at the <em>format</em> level — a full-service restaurant, a quick-service counter, a drive-through and a food truck have very different economics, but “pizza vs. burgers” doesn’t change the model. Pick the format that matches how you’d actually operate.</p></details>
+    <details><summary>Is a human or an AI writing my report?</summary><p>Neither. Each report is produced by a deterministic model — the same math every time, traceable end to end. We’d rather show you the arithmetic than have you trust a black box.</p></details>
+    <details><summary>What’s the “$80k test”?</summary><p>A general manager you’d hire to run the place earns about $75,000. If you’re doing that job yourself, the business should pay <em>you</em> more — and since the math is after tax, $80,000 take-home is the line that makes doing it yourself worth the effort.</p></details>
+    <details><summary>How does payment work?</summary><p>Checkout is handled by PayPal, and your report unlocks immediately. One honest note: on these low-priced reports the unlock is currently on the honor system — we don’t yet verify each payment server-side (a verified-checkout upgrade is on the roadmap). You’re covered either way by the “useful, or it’s free” guarantee.</p></details>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="container">
+  <div class="fgrid">
+    <div><div class="brand" style="display:flex;align-items:center;gap:.6rem"><svg class="logo" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#3D5AFE"/><path d="M16 5.5c-3.7 0-6.7 3-6.7 6.7C9.3 16.7 16 25 16 25s6.7-8.3 6.7-12.8C22.7 8.5 19.7 5.5 16 5.5z" fill="#fff"/><rect x="12.4" y="11.3" width="2.1" height="5.2" rx="1" fill="#3D5AFE"/><rect x="15.9" y="9.2" width="2.1" height="7.3" rx="1" fill="#22C55E"/><rect x="19.4" y="12.6" width="2.1" height="3.9" rx="1" fill="#3D5AFE"/></svg><div>Zipsight Lab<small style="display:block">a Geomarket Insights company</small></div></div>
+      <p style="font-size:.9rem;max-width:300px">Real data. Plain answers. Generated on the spot — before you bet the business.</p></div>
+    <div><h4>Reports</h4><a href="#reports">Know Your Customers</a><a href="#reports">Competition Report</a><a href="#reports">The Town Scan</a><a href="#reports">The Decision Report</a><a href="#reports">The Complete Report</a></div>
+    <div><h4>More</h4><a href="example-17322.html">Live example</a><a href="#human">Need an analyst?</a><a href="https://www.geomarketinsights.com">Geomarket Insights ↗</a><a href="#faq">FAQ</a></div>
+  </div>
+  <div class="fbot"><span>© <span id="yr"></span> Zipsight Lab — a self-serve product by Geomarket Insights.</span><span>Estimates to inform your decisions — not financial advice.</span></div>
+</div></footer>
+
+<!-- ===== GENERATOR MODAL ===== -->
+<div class="zl-modal" id="zlModal">
+  <div class="zl-panel">
+    <div class="zl-head"><div><span class="ht" id="zlTitle">Report</span><span class="hp" id="zlPrice">$0</span></div><button class="zl-x" onclick="ZL_close()" aria-label="Close">×</button></div>
+    <div class="zl-body">
+      <div class="zl-form" id="zlForm">
+        <div class="zl-grid">
+          <div><label>ZIP code<span class="hint">We pull households &amp; income from the US Census</span></label><input id="zlZip" inputmode="numeric" placeholder="e.g. 17322"></div>
+          <div id="zlBusinessWrap"><label>Business format</label><select id="zlBusiness"></select></div>
+        </div>
+        <div class="zl-grid" style="margin-top:14px">
+          <div><label>Households<span class="hint">auto from ZIP — editable</span></label><input id="zlHh" inputmode="numeric" placeholder="auto"></div>
+          <div><label>Median household income<span class="hint">auto from ZIP — editable</span></label><input id="zlInc" inputmode="numeric" placeholder="auto"></div>
+        </div>
+        <div class="zl-grid" style="margin-top:14px">
+          <div id="zlCompWrap"><label>Competitors nearby<span class="hint">same format, ~1.5 mi (default 2)</span></label><input id="zlComp" inputmode="numeric" value="2"></div>
+          <div></div>
+        </div>
+        <div class="zl-status" id="zlStatus"></div>
+        <div class="zl-err" id="zlErr"></div>
+        <button class="btn btn-primary zl-gen" style="width:100%" onclick="ZL_generate()">Generate my report →</button>
+      </div>
+      <div class="zl-result" id="zlResult"></div>
+    </div>
+  </div>
+</div>
+
+<script>/* ============================================================================
+   ZIPSIGHT CORE — deterministic market-decision math.  by Geomarket Insights.
+   No AI. No human judgement. Every output is arithmetic on public benchmarks
+   (US Census ACS + BLS Consumer Expenditure Survey + published industry ratios)
+   plus stated assumptions. This same funnel powers the Geomarket engine v3.
+
+   Works in the browser (window.ZIP) and in Node (module.exports) so the exact
+   figures can be unit-tested against the parent engine.
+   ========================================================================== */
+(function (root) {
+  'use strict';
+
+  // National ACS ~2022 benchmarks (US). Used for the "vs national" reads.
+  var NAT = {
+    medianHH: 75149, perCapita: 41261, medianAge: 38.5,
+    medianHome: 281900, avgHHSize: 2.58, bachPct: 34.3
+  };
+
+  var LOYALTY = 0.55;                 // share of incumbent demand assumed loyal (stated)
+  var RAMP = { y1: 0.50, y2: 0.80, y3: 1.00 };
+  var CAPTURES = { Conservative: 0.25, Base: 0.40, Optimistic: 0.60 };  // of ACCESSIBLE
+  var WEIGHTS = { Conservative: 0.35, Base: 0.45, Optimistic: 0.20 };
+
+  var clamp = function (n, lo, hi) { return Math.max(lo, Math.min(hi, n)); };
+  var sum = function (o) { return Object.keys(o).reduce(function (a, k) { return a + o[k]; }, 0); };
+  var money = function (n) {
+    if (n == null || isNaN(n)) return '—';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  };
+  var pct = function (n, d) { return (100 * n).toFixed(d == null ? 0 : d) + '%'; };
+
+  /* ---- THE FUNNEL (identical model to engine financials.js v3) ------------ */
+  function computeFunnel(opts) {
+    var industry = opts.industry;
+    var households = (opts.households != null) ? opts.households : 5500;
+    var income = (opts.income != null) ? opts.income : NAT.medianHH;
+    var nearbyCompetitors = Math.max(0, opts.nearbyCompetitors != null ? opts.nearbyCompetitors : 2);
+    var targetAfterTax = opts.targetAfterTax != null ? opts.targetAfterTax : 80000;
+    var taxRate = opts.taxRate != null ? opts.taxRate : 0.27;
+    var ownerFloor = opts.ownerFloor != null ? opts.ownerFloor : 50000;
+
+    var d = industry.demand;
+    var incomeAdj = clamp(Math.pow(income / NAT.medianHH, 0.85), 0.6, 1.9);
+    var N = nearbyCompetitors;
+
+    var tam = households * d.hhSpend * incomeAdj;
+    var sam = tam * d.share * (d.inflow || 1);
+    var unserved = sam * (1 / (N + 1));
+    var switchable = sam * (N / (N + 1)) * (1 - LOYALTY);
+    var accessible = unserved + switchable;
+
+    var costSum = sum(industry.costRatios);
+    var ownerRate = Math.max(0.01, +(1 - costSum).toFixed(4));
+    var afterFactor = 1 - taxRate;
+
+    var scenarios = Object.keys(CAPTURES).map(function (name) {
+      var rev = Math.round(accessible * CAPTURES[name]);
+      var ownerPre = rev * ownerRate;
+      var ownerAfter = ownerPre * afterFactor;
+      return {
+        name: name, capture: CAPTURES[name], rev: rev,
+        y1Rev: Math.round(rev * RAMP.y1), y2Rev: Math.round(rev * RAMP.y2),
+        ownerPre: ownerPre, ownerAfter: ownerAfter,
+        y1OwnerAfter: rev * RAMP.y1 * ownerRate * afterFactor,
+        p: WEIGHTS[name], clears: ownerAfter >= targetAfterTax
+      };
+    });
+
+    var base = scenarios[1].rev;
+    var expRev = scenarios.reduce(function (a, s) { return a + s.rev * s.p; }, 0);
+    var expAfter = scenarios.reduce(function (a, s) { return a + s.ownerAfter * s.p; }, 0);
+    var goRevenue = (targetAfterTax / afterFactor) / ownerRate;   // revenue needed to clear target
+    var pGo = scenarios.filter(function (s) { return s.clears; }).reduce(function (a, s) { return a + s.p; }, 0);
+    var verdict = expAfter >= targetAfterTax ? 'GO' : 'NO-GO';
+
+    var baseScn = scenarios[1];
+    var marketingBudget = base * (industry.costRatios.marketing || 0);
+    var taxes = baseScn.ownerPre * taxRate;
+    var cashForDebt = Math.max(0, baseScn.ownerPre - ownerFloor);
+    var loanCeiling = (cashForDebt / 1.25) * 5.9;
+
+    return {
+      industryLabel: industry.label, sourceQuality: industry.sourceQuality, source: industry.source,
+      households: households, income: income, incomeAdj: +incomeAdj.toFixed(2),
+      tam: Math.round(tam), sam: Math.round(sam),
+      unserved: Math.round(unserved), switchable: Math.round(switchable),
+      accessible: Math.round(accessible), loyalty: LOYALTY, ramp: RAMP,
+      demandCategory: d.category, categoryShare: d.share, inflow: d.inflow || 1,
+      nearbyCompetitors: N, fairShare: +(1 / (N + 1)).toFixed(2),
+      base: base, scenarios: scenarios, ownerRate: ownerRate, taxRate: taxRate,
+      targetAfterTax: targetAfterTax, expRev: expRev, expAfter: expAfter,
+      goRevenue: goRevenue, pGo: pGo, verdict: verdict,
+      y1OwnerAfter: baseScn.y1OwnerAfter,
+      marketingBudget: marketingBudget, taxes: taxes, loanCeiling: loanCeiling,
+      startup: industry.startup
+    };
+  }
+
+  /* ---- TOOL 1: OWNER WAGE TEST -------------------------------------------- */
+  // Can this market pay the owner the target ($80k after tax) — and what does
+  // it take? Returns the funnel plus a plain capacity read.
+  function ownerWageTest(opts) {
+    var f = computeFunnel(opts);
+    var capacityRatio = f.goRevenue > 0 ? f.accessible / f.goRevenue : 0;
+    var headroom;
+    if (capacityRatio >= 2.5) headroom = 'wide';        // market >2.5x the revenue you need
+    else if (capacityRatio >= 1.3) headroom = 'workable';
+    else if (capacityRatio >= 1.0) headroom = 'tight';
+    else headroom = 'too small';
+    return {
+      funnel: f,
+      goRevenue: f.goRevenue,            // revenue needed to pay owner the target
+      accessible: f.accessible,          // dollars a new entrant can fight for
+      capacityRatio: +capacityRatio.toFixed(2),
+      headroom: headroom,
+      verdict: f.verdict,
+      expectedOwnerAfter: f.expAfter,
+      pGo: f.pGo
+    };
+  }
+
+  /* ---- TOOL 3: BREAKEVEN RENT FINDER -------------------------------------- */
+  // Highest rent you can sign and still clear the target. Pure cost math.
+  function breakevenRent(opts) {
+    var industry = opts.industry;
+    var revenue = opts.annualRevenue;
+    var target = opts.targetAfterTax != null ? opts.targetAfterTax : 80000;
+    var taxRate = opts.taxRate != null ? opts.taxRate : 0.27;
+    var afterFactor = 1 - taxRate;
+
+    var cr = industry.costRatios;
+    var rentRatio = cr.rent || 0;
+    var costSumExRent = sum(cr) - rentRatio;              // all costs except rent
+    var grossBeforeRent = revenue * (1 - costSumExRent);  // dollars left before paying rent
+    var requiredOwnerPre = target / afterFactor;          // pre-tax owner $ needed
+    var maxAnnualRent = grossBeforeRent - requiredOwnerPre;
+    var typicalAnnualRent = revenue * rentRatio;          // what this industry usually pays
+
+    return {
+      industryLabel: industry.label,
+      revenue: revenue,
+      rentRatio: rentRatio,
+      grossBeforeRent: grossBeforeRent,
+      requiredOwnerPre: requiredOwnerPre,
+      target: target, taxRate: taxRate,
+      maxAnnualRent: maxAnnualRent,
+      maxMonthlyRent: maxAnnualRent / 12,
+      typicalAnnualRent: typicalAnnualRent,
+      typicalMonthlyRent: typicalAnnualRent / 12,
+      feasible: maxAnnualRent > 0
+    };
+  }
+  // Grade a specific asking rent against the ceiling.
+  function gradeRent(be, askingMonthly) {
+    var ceiling = be.maxMonthlyRent;
+    if (askingMonthly <= ceiling * 0.75) return { grade: 'GREEN', note: 'comfortably below your ceiling' };
+    if (askingMonthly <= ceiling) return { grade: 'AMBER', note: 'workable but leaves little cushion' };
+    return { grade: 'RED', note: 'above the rent your target can support' };
+  }
+
+  /* ---- TOOL 4: PRICE HEADROOM CALCULATOR ---------------------------------- */
+  function priceHeadroom(opts) {
+    var price = opts.price;
+    var vc = opts.variableCostPerUnit || 0;
+    var annualUnits = opts.unitsPerPeriod * (opts.periodsPerYear || 52);
+    var fixed = opts.fixedCostsAnnual || 0;
+    var target = opts.targetAfterTax != null ? opts.targetAfterTax : 80000;
+    var taxRate = opts.taxRate != null ? opts.taxRate : 0.27;
+    var afterFactor = 1 - taxRate;
+
+    var cpu = price - vc;                                  // contribution per unit
+    var annualContribution = cpu * annualUnits;
+    var ownerPre = annualContribution - fixed;
+    var ownerAfter = ownerPre * afterFactor;
+
+    var requiredOwnerPre = target / afterFactor;
+    var requiredContribution = requiredOwnerPre + fixed;
+    var requiredPriceAtVolume = vc + requiredContribution / annualUnits;   // hold volume, raise price
+    var requiredUnits = cpu > 0 ? requiredContribution / cpu : Infinity;   // hold price, raise volume
+
+    var priceGapPct = (requiredPriceAtVolume - price) / price;
+
+    // Elasticity break-even: for a price change, how much volume can you lose
+    // before the change makes you WORSE off than today?  maxDrop = 1 - cpu/cpu'.
+    function breakEvenDrop(risePct) {
+      var newCpu = price * (1 + risePct) - vc;
+      if (newCpu <= 0) return null;
+      return 1 - (cpu / newCpu);
+    }
+
+    return {
+      price: price, variableCostPerUnit: vc, annualUnits: annualUnits, fixedCostsAnnual: fixed,
+      revenue: price * annualUnits, contributionPerUnit: cpu, annualContribution: annualContribution,
+      ownerPre: ownerPre, ownerAfter: ownerAfter, target: target, taxRate: taxRate,
+      clearsTarget: ownerAfter >= target,
+      requiredPriceAtVolume: requiredPriceAtVolume, requiredUnits: requiredUnits,
+      priceGapPct: priceGapPct,
+      elasticity: { p5: breakEvenDrop(0.05), p10: breakEvenDrop(0.10), p15: breakEvenDrop(0.15) }
+    };
+  }
+
+  /* ---- TOOL 5: SECOND-LOCATION TEST --------------------------------------- */
+  // Does a candidate ZIP support ANOTHER target-clearing unit, and can the
+  // current business fund the buildout from its own cash flow?
+  function secondLocation(opts) {
+    var market = ownerWageTest({
+      industry: opts.industry, households: opts.households, income: opts.income,
+      nearbyCompetitors: opts.nearbyCompetitors, targetAfterTax: opts.targetAfterTax,
+      taxRate: opts.taxRate
+    });
+    var currentSDE = opts.currentAnnualProfit || 0;       // owner's current pre-tax take
+    var ownerFloor = opts.ownerFloor != null ? opts.ownerFloor : 50000;
+    var cashForDebt = Math.max(0, currentSDE - ownerFloor);
+    var loanCeiling = (cashForDebt / 1.25) * 5.9;         // DSCR 1.25, ~10-yr @ ~8%
+    var startup = opts.industry.startup || [50000, 300000];
+    var buildLow = startup[0], buildHigh = startup[1];
+
+    var marketOK = market.verdict === 'GO';
+    var fundsLow = loanCeiling >= buildLow;
+    var fundsHigh = loanCeiling >= buildHigh;
+    var affordability = fundsHigh ? 'covers a typical buildout'
+      : fundsLow ? 'covers a lean buildout, not a top-end one'
+        : 'below even a lean buildout — you would need outside capital';
+
+    var verdict;
+    if (marketOK && fundsLow) verdict = 'EXPAND';
+    else if (marketOK && !fundsLow) verdict = 'MARKET YES, CASH NO';
+    else if (!marketOK && fundsLow) verdict = 'CAN AFFORD, MARKET WEAK';
+    else verdict = 'HOLD';
+
+    return {
+      market: market, verdict: verdict,
+      currentSDE: currentSDE, ownerFloor: ownerFloor,
+      cashForDebt: cashForDebt, loanCeiling: loanCeiling,
+      buildLow: buildLow, buildHigh: buildHigh,
+      fundsLow: fundsLow, fundsHigh: fundsHigh, affordability: affordability
+    };
+  }
+
+  /* ---- TOOL 6: SELL-OR-HOLD VALUATION ------------------------------------- */
+  function valuation(opts) {
+    var sde = opts.annualSDE;
+    var mult = opts.multiple;                       // {low, high, basis}
+    var target = opts.targetAfterTax != null ? opts.targetAfterTax : 80000;
+    var taxRate = opts.taxRate != null ? opts.taxRate : 0.27;
+    var employedWage = opts.employedWage != null ? opts.employedWage : 59000; // BLS-ish median full-time
+    var inventory = opts.inventory || 0;
+
+    var low = sde * mult.low + inventory;
+    var high = sde * mult.high + inventory;
+    var mid = (low + high) / 2;
+
+    var sdeAfterTax = sde * (1 - taxRate);
+    var vsTarget = sdeAfterTax - target;
+    var vsEmployed = sdeAfterTax - employedWage;
+
+    var signal, plain;
+    if (sdeAfterTax >= target) {
+      signal = 'THRIVING';
+      plain = 'The business already pays you more, after tax, than the $' + Math.round(target / 1000) + 'k target. Holding is paying you well; a sale is optional, on your terms.';
+    } else if (sdeAfterTax >= employedWage) {
+      signal = 'VIABLE';
+      plain = 'You out-earn a typical job, but fall short of the $' + Math.round(target / 1000) + 'k target. Worth fixing before you sell — small margin or volume gains close the gap.';
+    } else {
+      signal = 'UNDERWATER';
+      plain = 'After tax you earn less than you likely could as an employee. You are effectively buying yourself a job. Fix the economics fast, or weigh selling for the asset value below.';
+    }
+
+    return {
+      sde: sde, inventory: inventory, multiple: mult,
+      low: low, mid: mid, high: high,
+      sdeAfterTax: sdeAfterTax, target: target, employedWage: employedWage,
+      vsTarget: vsTarget, vsEmployed: vsEmployed,
+      signal: signal, plain: plain
+    };
+  }
+
+  /* ---- INDUSTRY LOOKUP ---------------------------------------------------- */
+  function findIndustry(query, industries) {
+    if (!industries) return null;
+    var key = String(query || '').toLowerCase().trim();
+    if (!key) return null;
+    if (industries[key]) return industries[key];
+    // exact label match
+    var k;
+    for (k in industries) if (industries[k].label.toLowerCase() === key) return industries[k];
+    // contains match on key
+    for (k in industries) if (key.indexOf(k) !== -1 || k.indexOf(key) !== -1) return industries[k];
+    // contains match on label words
+    for (k in industries) if (industries[k].label.toLowerCase().indexOf(key) !== -1) return industries[k];
+    // stem match (e.g. "plumber" -> "plumbing"): share a 5+ char prefix
+    if (key.length >= 4) {
+      var stem = key.slice(0, 5);
+      for (k in industries) {
+        if (k.slice(0, 5) === stem || key.slice(0, k.length) === k) return industries[k];
+        var words = industries[k].label.toLowerCase().split(/[^a-z]+/);
+        for (var w = 0; w < words.length; w++) if (words[w].length >= 4 && words[w].slice(0, 5) === stem) return industries[k];
+      }
+    }
+    return null;
+  }
+
+  var API = {
+    NAT: NAT, LOYALTY: LOYALTY, RAMP: RAMP, CAPTURES: CAPTURES, WEIGHTS: WEIGHTS,
+    computeFunnel: computeFunnel, ownerWageTest: ownerWageTest,
+    breakevenRent: breakevenRent, gradeRent: gradeRent,
+    priceHeadroom: priceHeadroom, secondLocation: secondLocation,
+    valuation: valuation, findIndustry: findIndustry,
+    money: money, pct: pct
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API;
+  root.ZIP = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+<script>window.ZIP_CATEGORIES={
+  "sectors": [
+    {
+      "sector": "Food & Drink",
+      "items": [
+        {
+          "id": "full-service-restaurant",
+          "label": "Full-service restaurant (sit-down)",
+          "naics": "722511"
+        },
+        {
+          "id": "quick-service-restaurant",
+          "label": "Quick-service / fast-casual (counter)",
+          "naics": "722513"
+        },
+        {
+          "id": "drive-through",
+          "label": "Drive-through restaurant",
+          "naics": "722513"
+        },
+        {
+          "id": "mobile-food",
+          "label": "Mobile food (truck / cart / trailer)",
+          "naics": "722330"
+        },
+        {
+          "id": "cafe",
+          "label": "Café / coffee & tea shop",
+          "naics": "722515"
+        },
+        {
+          "id": "bakery",
+          "label": "Bakery / pastry shop",
+          "naics": "311811"
+        },
+        {
+          "id": "dessert-shop",
+          "label": "Ice cream / dessert shop",
+          "naics": "722515"
+        },
+        {
+          "id": "bar",
+          "label": "Bar / tavern / pub",
+          "naics": "722410"
+        },
+        {
+          "id": "brewery",
+          "label": "Brewery / taproom",
+          "naics": "312120"
+        },
+        {
+          "id": "catering",
+          "label": "Catering / commissary kitchen (no storefront)",
+          "naics": "722320"
+        }
+      ]
+    },
+    {
+      "sector": "Retail — storefront",
+      "items": [
+        {
+          "id": "apparel-store",
+          "label": "Apparel & accessories store",
+          "naics": "4481"
+        },
+        {
+          "id": "specialty-retail",
+          "label": "Specialty retail shop (gifts, general)",
+          "naics": "453"
+        },
+        {
+          "id": "grocery",
+          "label": "Grocery / market",
+          "naics": "4451"
+        },
+        {
+          "id": "convenience",
+          "label": "Convenience store",
+          "naics": "445131"
+        },
+        {
+          "id": "liquor-store",
+          "label": "Liquor / package store",
+          "naics": "4453"
+        },
+        {
+          "id": "pet-store",
+          "label": "Pet supply store",
+          "naics": "453910"
+        },
+        {
+          "id": "hardware",
+          "label": "Hardware / home-improvement store",
+          "naics": "4441"
+        },
+        {
+          "id": "books-hobby",
+          "label": "Books / hobby / gift store",
+          "naics": "451"
+        },
+        {
+          "id": "florist",
+          "label": "Florist",
+          "naics": "4531"
+        }
+      ]
+    },
+    {
+      "sector": "Personal care",
+      "items": [
+        {
+          "id": "hair-salon",
+          "label": "Hair salon",
+          "naics": "812112"
+        },
+        {
+          "id": "barbershop",
+          "label": "Barbershop",
+          "naics": "812111"
+        },
+        {
+          "id": "nail-salon",
+          "label": "Nail salon",
+          "naics": "812113"
+        },
+        {
+          "id": "day-spa",
+          "label": "Day spa / esthetics",
+          "naics": "812199"
+        },
+        {
+          "id": "massage",
+          "label": "Massage therapy",
+          "naics": "621399"
+        }
+      ]
+    },
+    {
+      "sector": "Health, fitness & wellness",
+      "items": [
+        {
+          "id": "gym",
+          "label": "Gym / fitness center",
+          "naics": "713940"
+        },
+        {
+          "id": "boutique-studio",
+          "label": "Boutique studio (yoga / pilates / cycling)",
+          "naics": "713940"
+        },
+        {
+          "id": "dental",
+          "label": "Dental practice",
+          "naics": "6212"
+        },
+        {
+          "id": "veterinary",
+          "label": "Veterinary clinic",
+          "naics": "54194"
+        },
+        {
+          "id": "pharmacy",
+          "label": "Pharmacy",
+          "naics": "44611"
+        }
+      ]
+    },
+    {
+      "sector": "Home & trade services",
+      "items": [
+        {
+          "id": "plumbing",
+          "label": "Plumbing",
+          "naics": "238220"
+        },
+        {
+          "id": "hvac",
+          "label": "HVAC / heating & cooling",
+          "naics": "238220"
+        },
+        {
+          "id": "electrical",
+          "label": "Electrical",
+          "naics": "238210"
+        },
+        {
+          "id": "roofing",
+          "label": "Roofing",
+          "naics": "238160"
+        },
+        {
+          "id": "painting",
+          "label": "Painting (interior / exterior)",
+          "naics": "238320"
+        },
+        {
+          "id": "general-contractor",
+          "label": "General contractor / remodeling",
+          "naics": "236118"
+        },
+        {
+          "id": "landscaping",
+          "label": "Landscaping / lawn care",
+          "naics": "561730"
+        },
+        {
+          "id": "cleaning",
+          "label": "Cleaning (home / commercial)",
+          "naics": "561720"
+        },
+        {
+          "id": "handyman",
+          "label": "Handyman / general repair",
+          "naics": "811490"
+        },
+        {
+          "id": "pest-control",
+          "label": "Pest control",
+          "naics": "561710"
+        },
+        {
+          "id": "auto-repair",
+          "label": "Auto repair & service",
+          "naics": "811111"
+        },
+        {
+          "id": "car-wash",
+          "label": "Car wash / detailing",
+          "naics": "811192"
+        }
+      ]
+    },
+    {
+      "sector": "Care & pet services",
+      "items": [
+        {
+          "id": "childcare",
+          "label": "Childcare / daycare",
+          "naics": "624410"
+        },
+        {
+          "id": "pet-grooming",
+          "label": "Pet grooming / boarding",
+          "naics": "812910"
+        }
+      ]
+    },
+    {
+      "sector": "Professional & office",
+      "items": [
+        {
+          "id": "bookkeeping",
+          "label": "Bookkeeping / tax prep",
+          "naics": "541219"
+        },
+        {
+          "id": "pro-services",
+          "label": "Professional / office services (consulting, agency, insurance, real estate)",
+          "naics": "54"
+        }
+      ]
+    },
+    {
+      "sector": "Other",
+      "items": [
+        {
+          "id": "laundromat",
+          "label": "Laundromat / self-serve laundry",
+          "naics": "812310"
+        }
+      ]
+    }
+  ],
+  "byId": {
+    "full-service-restaurant": {
+      "label": "Full-service restaurant (sit-down)",
+      "naics": "722511",
+      "costRatios": {
+        "cogs": 0.32,
+        "labor": 0.3,
+        "rent": 0.08,
+        "marketing": 0.04,
+        "other": 0.13
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024)",
+        "share": 0.55,
+        "inflow": 1.1
+      },
+      "startup": [
+        175000,
+        750000
+      ],
+      "netMarginPct": "3–8%",
+      "source": "Full-service COGS avg 32.4%, labor median 36.5% (owner-adjusted), prime cost 55–65%, net 3–8% (WhippleWood restaurant benchmarks).",
+      "sourceQuality": "cited",
+      "archetype": "food",
+      "hours": "60–75",
+      "difficulty": {
+        "reg": 4,
+        "cap": 4,
+        "staff": 5,
+        "skill": 3
+      },
+      "licenses": [
+        "Health permit & inspections",
+        "Food manager certification",
+        "Liquor license (if serving)",
+        "Fire/occupancy certificates"
+      ],
+      "setup": [
+        "Commercial kitchen buildout ($75k+)",
+        "Dining room furnishing",
+        "POS + reservation system",
+        "Food & beverage supplier contracts"
+      ],
+      "staffing": "8–20 across kitchen and floor — the hardest part of the business",
+      "id": "full-service-restaurant",
+      "sector": "Food & Drink"
+    },
+    "quick-service-restaurant": {
+      "label": "Quick-service / fast-casual (counter)",
+      "naics": "722513",
+      "costRatios": {
+        "cogs": 0.3,
+        "labor": 0.25,
+        "rent": 0.08,
+        "marketing": 0.04,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024) — QSR slice",
+        "share": 0.2,
+        "inflow": 1.15
+      },
+      "startup": [
+        100000,
+        400000
+      ],
+      "netMarginPct": "5–12%",
+      "source": "Quick-service net margins 5–12% vs full-service 3–8% (WhippleWood restaurant benchmarks).",
+      "sourceQuality": "cited",
+      "archetype": "food",
+      "hours": "55–70",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Health permit",
+        "Food handler certs",
+        "Sales tax registration"
+      ],
+      "setup": [
+        "Deck/conveyor ovens ($20–60k)",
+        "Delivery strategy (in-house vs apps)",
+        "POS with online ordering",
+        "Dough/ingredient suppliers"
+      ],
+      "staffing": "4–10 across shifts",
+      "id": "quick-service-restaurant",
+      "sector": "Food & Drink"
+    },
+    "drive-through": {
+      "label": "Drive-through restaurant",
+      "naics": "722513",
+      "costRatios": {
+        "cogs": 0.3,
+        "labor": 0.22,
+        "rent": 0.07,
+        "marketing": 0.05,
+        "other": 0.14
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024) — drive-thru slice",
+        "share": 0.18,
+        "inflow": 1.35
+      },
+      "startup": [
+        150000,
+        700000
+      ],
+      "netMarginPct": "6–12%",
+      "source": "Drive-thru QSR: higher throughput, less dine-in space (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "55–70",
+      "difficulty": {
+        "reg": 3,
+        "cap": 4,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Health permit & inspections",
+        "Food handler certifications",
+        "Drive-thru/traffic & signage permits",
+        "Sales tax registration"
+      ],
+      "setup": [
+        "Drive-thru lane, window & menu boards",
+        "Kitchen production line",
+        "POS + order-ahead",
+        "Supplier accounts"
+      ],
+      "staffing": "4–10 across shifts",
+      "id": "drive-through",
+      "sector": "Food & Drink"
+    },
+    "mobile-food": {
+      "label": "Mobile food (truck / cart / trailer)",
+      "naics": "722330",
+      "costRatios": {
+        "cogs": 0.3,
+        "labor": 0.12,
+        "rent": 0.04,
+        "marketing": 0.05,
+        "other": 0.19
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024) — mobile slice",
+        "share": 0.04,
+        "inflow": 1.5
+      },
+      "startup": [
+        50000,
+        175000
+      ],
+      "netMarginPct": "6–9%",
+      "source": "Mobile food: no dining-room rent, commissary + vehicle costs instead (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "50–65 (events-driven)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 1,
+        "skill": 2
+      },
+      "licenses": [
+        "Mobile food vendor permit",
+        "Commissary kitchen agreement",
+        "Health inspections per county",
+        "Event/location permits"
+      ],
+      "setup": [
+        "Truck & kitchen fit-out ($50–150k)",
+        "Commissary arrangement",
+        "POS + social-driven location updates",
+        "Event calendar pipeline"
+      ],
+      "staffing": "Owner + 1–2",
+      "id": "mobile-food",
+      "sector": "Food & Drink"
+    },
+    "cafe": {
+      "label": "Café / coffee & tea shop",
+      "naics": "722515",
+      "costRatios": {
+        "cogs": 0.3,
+        "labor": 0.22,
+        "rent": 0.12,
+        "marketing": 0.07,
+        "other": 0.06
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024)",
+        "share": 0.1,
+        "inflow": 1.15
+      },
+      "startup": [
+        80000,
+        300000
+      ],
+      "netMarginPct": "2.5–10%",
+      "source": "Café cost benchmarks: COGS 25–35%, labor 25–40%, rent 10–15%, marketing 5–10% (Novatab 2026); independent net margins 2.5–10%.",
+      "sourceQuality": "cited",
+      "archetype": "food",
+      "hours": "55–65",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license & EIN",
+        "Health department food permit",
+        "Food handler certifications",
+        "Sales tax registration"
+      ],
+      "setup": [
+        "Espresso machine & grinders ($15–40k)",
+        "Buildout: counter, seating, plumbing",
+        "POS + order-ahead app",
+        "Supplier accounts (roaster, dairy, bakery)"
+      ],
+      "staffing": "2–6 part-time baristas plus the owner",
+      "id": "cafe",
+      "sector": "Food & Drink"
+    },
+    "bakery": {
+      "label": "Bakery / pastry shop",
+      "naics": "311811",
+      "costRatios": {
+        "cogs": 0.28,
+        "labor": 0.28,
+        "rent": 0.1,
+        "marketing": 0.05,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024)",
+        "share": 0.06,
+        "inflow": 1.1
+      },
+      "startup": [
+        70000,
+        250000
+      ],
+      "netMarginPct": "4–9%",
+      "source": "Bakery cost structure: ingredients ~25–30%, labor 25–35% (industry baking benchmarks).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "55–70 (early mornings)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 3,
+        "skill": 3
+      },
+      "licenses": [
+        "Health department food permit",
+        "Food handler certs",
+        "Sales tax registration"
+      ],
+      "setup": [
+        "Commercial ovens, mixers, proofers ($30–80k)",
+        "Display cases & front counter",
+        "Early-morning production schedule",
+        "Flour/ingredient suppliers"
+      ],
+      "staffing": "2–5 bakers/counter staff",
+      "id": "bakery",
+      "sector": "Food & Drink"
+    },
+    "dessert-shop": {
+      "label": "Ice cream / dessert shop",
+      "naics": "722515",
+      "costRatios": {
+        "cogs": 0.25,
+        "labor": 0.24,
+        "rent": 0.12,
+        "marketing": 0.05,
+        "other": 0.1
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024) — dessert slice",
+        "share": 0.03,
+        "inflow": 1.35
+      },
+      "startup": [
+        50000,
+        250000
+      ],
+      "netMarginPct": "5–12%",
+      "source": "Dessert retail: high gross margin, strong seasonality (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "50–65 seasonal",
+      "difficulty": {
+        "reg": 2,
+        "cap": 2,
+        "staff": 2,
+        "skill": 1
+      },
+      "licenses": [
+        "Health permit",
+        "Food handler certs"
+      ],
+      "setup": [
+        "Freezers & dipping cabinets",
+        "Seasonal staffing plan",
+        "Supplier or make-your-own decision"
+      ],
+      "staffing": "2–8 seasonal part-timers",
+      "id": "dessert-shop",
+      "sector": "Food & Drink"
+    },
+    "bar": {
+      "label": "Bar / tavern / pub",
+      "naics": "722410",
+      "costRatios": {
+        "cogs": 0.24,
+        "labor": 0.26,
+        "rent": 0.09,
+        "marketing": 0.04,
+        "other": 0.15
+      },
+      "demand": {
+        "hhSpend": 643,
+        "category": "Alcoholic beverages ($643/hh, BLS CEX 2024)",
+        "share": 0.75,
+        "inflow": 1.3
+      },
+      "startup": [
+        125000,
+        550000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "Pour-cost benchmarks 18–24% of beverage sales; bar net margins 8–15% (industry hospitality benchmarks).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "55–70",
+      "difficulty": {
+        "reg": 5,
+        "cap": 4,
+        "staff": 4,
+        "skill": 2
+      },
+      "licenses": [
+        "Liquor license (costly; limited supply in many states)",
+        "Health permit",
+        "Music licensing (BMI/ASCAP)",
+        "Late-hours permits"
+      ],
+      "setup": [
+        "Bar buildout & draft system",
+        "Inventory & pour-control system",
+        "Security/ID scanning",
+        "Distributor accounts"
+      ],
+      "staffing": "4–10 bartenders/servers/security",
+      "id": "bar",
+      "sector": "Food & Drink"
+    },
+    "brewery": {
+      "label": "Brewery / taproom",
+      "naics": "312120",
+      "costRatios": {
+        "cogs": 0.3,
+        "labor": 0.28,
+        "rent": 0.1,
+        "marketing": 0.05,
+        "other": 0.11
+      },
+      "demand": {
+        "hhSpend": 643,
+        "category": "Alcoholic beverages ($643/hh, BLS CEX 2024)",
+        "share": 1,
+        "inflow": 1.5
+      },
+      "startup": [
+        250000,
+        1000000
+      ],
+      "netMarginPct": "5–15%",
+      "source": "Brewers Association-style taproom economics; destination inflow modeled at 1.5x.",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "55–70",
+      "difficulty": {
+        "reg": 5,
+        "cap": 5,
+        "staff": 3,
+        "skill": 4
+      },
+      "licenses": [
+        "Federal TTB brewer's notice (months-long)",
+        "State brewing & liquor licenses",
+        "Health permits for taproom"
+      ],
+      "setup": [
+        "Brewhouse & tanks ($150–500k)",
+        "Taproom buildout",
+        "Canning/kegging line decision",
+        "Distribution strategy"
+      ],
+      "staffing": "3–8 brewing + taproom",
+      "id": "brewery",
+      "sector": "Food & Drink"
+    },
+    "catering": {
+      "label": "Catering / commissary kitchen (no storefront)",
+      "naics": "722320",
+      "costRatios": {
+        "cogs": 0.34,
+        "labor": 0.2,
+        "rent": 0.05,
+        "marketing": 0.05,
+        "other": 0.16
+      },
+      "demand": {
+        "hhSpend": 3945,
+        "category": "Food away from home ($3,945/hh, BLS CEX 2024) — catering slice",
+        "share": 0.05,
+        "inflow": 1
+      },
+      "startup": [
+        10000,
+        80000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "Off-premise catering: commissary/low rent, event-driven (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "food",
+      "hours": "45–60 (event spikes)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 3,
+        "skill": 3
+      },
+      "licenses": [
+        "Health permit",
+        "Commissary kitchen agreement",
+        "Food manager certification"
+      ],
+      "setup": [
+        "Commissary kitchen access",
+        "Transport & serving equipment",
+        "Menu & event pricing",
+        "Booking pipeline"
+      ],
+      "staffing": "Owner + event staff as booked",
+      "id": "catering",
+      "sector": "Food & Drink"
+    },
+    "apparel-store": {
+      "label": "Apparel & accessories store",
+      "naics": "4481",
+      "costRatios": {
+        "cogs": 0.55,
+        "labor": 0.14,
+        "rent": 0.11,
+        "marketing": 0.05,
+        "other": 0.09
+      },
+      "demand": {
+        "hhSpend": 2001,
+        "category": "Apparel & services ($2,001/hh, BLS CEX 2024) — locally addressable slice",
+        "share": 0.25,
+        "inflow": 1.15
+      },
+      "startup": [
+        50000,
+        200000
+      ],
+      "netMarginPct": "3–8%",
+      "source": "Retail averages: gross margin 30.9%, net 3.1% (NYU Stern via NetSuite, Jan 2024); boutique COGS ~55%.",
+      "sourceQuality": "cited",
+      "archetype": "storefront",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 1,
+        "cap": 3,
+        "staff": 2,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Sales tax permit",
+        "Resale certificate"
+      ],
+      "setup": [
+        "Buildout: fixtures, fitting rooms, lighting",
+        "Opening inventory ($20–60k)",
+        "POS + e-commerce channel",
+        "Wholesale/brand accounts"
+      ],
+      "staffing": "1–4; owner-heavy floor time",
+      "id": "apparel-store",
+      "sector": "Retail — storefront"
+    },
+    "specialty-retail": {
+      "label": "Specialty retail shop (gifts, general)",
+      "naics": "453",
+      "costRatios": {
+        "cogs": 0.5,
+        "labor": 0.15,
+        "rent": 0.11,
+        "marketing": 0.05,
+        "other": 0.1
+      },
+      "demand": {
+        "hhSpend": 3609,
+        "category": "Entertainment/discretionary ($3,609/hh, BLS CEX 2024) — specialty slice",
+        "share": 0.12,
+        "inflow": 1.15
+      },
+      "startup": [
+        30000,
+        150000
+      ],
+      "netMarginPct": "3–8%",
+      "source": "General specialty retail vs retail averages (NYU Stern).",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 1,
+        "cap": 3,
+        "staff": 2,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Sales tax permit",
+        "Resale certificate"
+      ],
+      "setup": [
+        "Fixtures & fit-out",
+        "Opening inventory",
+        "POS + online channel",
+        "Supplier/brand accounts"
+      ],
+      "staffing": "1–4",
+      "id": "specialty-retail",
+      "sector": "Retail — storefront"
+    },
+    "grocery": {
+      "label": "Grocery / market",
+      "naics": "4451",
+      "costRatios": {
+        "cogs": 0.745,
+        "labor": 0.11,
+        "rent": 0.03,
+        "marketing": 0.01,
+        "other": 0.055
+      },
+      "demand": {
+        "hhSpend": 6224,
+        "category": "Food at home ($6,224/hh, BLS CEX 2024)",
+        "share": 0.85,
+        "inflow": 1.05
+      },
+      "startup": [
+        100000,
+        1000000
+      ],
+      "netMarginPct": "1–3%",
+      "source": "Grocery: gross margin 25.5%, net margin 1.2% (NYU Stern via NetSuite, Jan 2024).",
+      "sourceQuality": "cited",
+      "archetype": "storefront",
+      "hours": "60–75",
+      "difficulty": {
+        "reg": 3,
+        "cap": 5,
+        "staff": 4,
+        "skill": 2
+      },
+      "licenses": [
+        "Health permits (refrigeration, deli)",
+        "SNAP/EBT authorization",
+        "Alcohol/tobacco licenses if sold",
+        "Weights & measures"
+      ],
+      "setup": [
+        "Refrigeration & shelving ($100k+)",
+        "Opening inventory ($50–200k)",
+        "POS with scale integration",
+        "Distributor relationships"
+      ],
+      "staffing": "6–15 across shifts",
+      "id": "grocery",
+      "sector": "Retail — storefront"
+    },
+    "convenience": {
+      "label": "Convenience store",
+      "naics": "445131",
+      "costRatios": {
+        "cogs": 0.68,
+        "labor": 0.11,
+        "rent": 0.05,
+        "marketing": 0.01,
+        "other": 0.07
+      },
+      "demand": {
+        "hhSpend": 6224,
+        "category": "Food at home + impulse ($6,224/hh, BLS CEX 2024)",
+        "share": 0.28,
+        "inflow": 1.4
+      },
+      "startup": [
+        50000,
+        300000
+      ],
+      "netMarginPct": "2–5%",
+      "source": "Convenience retail: impulse/roadside margins above grocery (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "70–90",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 3,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Tobacco/alcohol/lottery permits",
+        "Health permit"
+      ],
+      "setup": [
+        "Coolers & shelving",
+        "POS with age verification",
+        "Distributor accounts",
+        "Cameras/security"
+      ],
+      "staffing": "4–10 across long hours",
+      "id": "convenience",
+      "sector": "Retail — storefront"
+    },
+    "liquor-store": {
+      "label": "Liquor / package store",
+      "naics": "4453",
+      "costRatios": {
+        "cogs": 0.72,
+        "labor": 0.09,
+        "rent": 0.05,
+        "marketing": 0.01,
+        "other": 0.06
+      },
+      "demand": {
+        "hhSpend": 643,
+        "category": "Alcohol, off-premise ($643/hh, BLS CEX 2024)",
+        "share": 1,
+        "inflow": 1.6
+      },
+      "startup": [
+        100000,
+        500000
+      ],
+      "netMarginPct": "3–7%",
+      "source": "Package liquor retail: high COGS, thin net, license-gated (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "60–75",
+      "difficulty": {
+        "reg": 5,
+        "cap": 4,
+        "staff": 2,
+        "skill": 1
+      },
+      "licenses": [
+        "State liquor license (limited/costly)",
+        "Business license",
+        "Sales tax permit"
+      ],
+      "setup": [
+        "Shelving & coolers",
+        "Opening inventory",
+        "POS with age verification",
+        "Distributor accounts"
+      ],
+      "staffing": "2–6",
+      "id": "liquor-store",
+      "sector": "Retail — storefront"
+    },
+    "pet-store": {
+      "label": "Pet supply store",
+      "naics": "453910",
+      "costRatios": {
+        "cogs": 0.58,
+        "labor": 0.15,
+        "rent": 0.1,
+        "marketing": 0.04,
+        "other": 0.08
+      },
+      "demand": {
+        "hhSpend": 3609,
+        "category": "Entertainment ($3,609/hh, BLS CEX 2024) — pets slice",
+        "share": 0.2,
+        "inflow": 1.05
+      },
+      "startup": [
+        50000,
+        250000
+      ],
+      "netMarginPct": "3–8%",
+      "source": "Specialty retail cost structure vs retail averages (NYU Stern via NetSuite).",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 2,
+        "cap": 3,
+        "staff": 2,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Live-animal permits if selling pets",
+        "Sales tax permit"
+      ],
+      "setup": [
+        "Fixtures & opening inventory",
+        "POS",
+        "Distributor accounts (food brands drive traffic)"
+      ],
+      "staffing": "1–4",
+      "id": "pet-store",
+      "sector": "Retail — storefront"
+    },
+    "hardware": {
+      "label": "Hardware / home-improvement store",
+      "naics": "4441",
+      "costRatios": {
+        "cogs": 0.658,
+        "labor": 0.12,
+        "rent": 0.05,
+        "marketing": 0.02,
+        "other": 0.06
+      },
+      "demand": {
+        "hhSpend": 1200,
+        "category": "Home maintenance & repair supplies (~$1,200/hh, industry-typical)",
+        "share": 0.6,
+        "inflow": 1.1
+      },
+      "startup": [
+        100000,
+        600000
+      ],
+      "netMarginPct": "5–9%",
+      "source": "Retail building supply: gross margin 34.2%, net 8.4% (NYU Stern via NetSuite, Jan 2024).",
+      "sourceQuality": "cited",
+      "archetype": "storefront",
+      "hours": "55–65",
+      "difficulty": {
+        "reg": 2,
+        "cap": 4,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Sales tax permit",
+        "Hazmat handling (propane, chemicals)"
+      ],
+      "setup": [
+        "Heavy shelving & yard space",
+        "Deep opening inventory ($75k+)",
+        "Co-op membership (Ace/True Value) decision",
+        "POS with 20k+ SKUs"
+      ],
+      "staffing": "3–8",
+      "id": "hardware",
+      "sector": "Retail — storefront"
+    },
+    "books-hobby": {
+      "label": "Books / hobby / gift store",
+      "naics": "451",
+      "costRatios": {
+        "cogs": 0.56,
+        "labor": 0.17,
+        "rent": 0.11,
+        "marketing": 0.03,
+        "other": 0.08
+      },
+      "demand": {
+        "hhSpend": 125,
+        "category": "Reading ($125/hh, BLS CEX 2024)",
+        "share": 0.8,
+        "inflow": 1.2
+      },
+      "startup": [
+        50000,
+        200000
+      ],
+      "netMarginPct": "1–4%",
+      "source": "Reading spend $125/hh (BLS CEX 2024) — a structurally thin category; retail cost averages (NYU Stern).",
+      "sourceQuality": "cited",
+      "archetype": "storefront",
+      "hours": "45–55",
+      "difficulty": {
+        "reg": 1,
+        "cap": 2,
+        "staff": 1,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Sales tax permit"
+      ],
+      "setup": [
+        "Shelving & opening inventory",
+        "POS with inventory",
+        "Events space (the survival strategy)"
+      ],
+      "staffing": "1–3; owner-run typical",
+      "id": "books-hobby",
+      "sector": "Retail — storefront"
+    },
+    "florist": {
+      "label": "Florist",
+      "naics": "4531",
+      "costRatios": {
+        "cogs": 0.4,
+        "labor": 0.25,
+        "rent": 0.1,
+        "marketing": 0.05,
+        "other": 0.1
+      },
+      "demand": {
+        "hhSpend": 80,
+        "category": "Fresh flowers (~$80/hh, industry-typical)",
+        "share": 0.85,
+        "inflow": 1.1
+      },
+      "startup": [
+        30000,
+        150000
+      ],
+      "netMarginPct": "4–9%",
+      "source": "Floriculture retail norms; cost ratios industry-typical.",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "45–60 (holiday spikes)",
+      "difficulty": {
+        "reg": 1,
+        "cap": 2,
+        "staff": 2,
+        "skill": 3
+      },
+      "licenses": [
+        "Business license",
+        "Sales tax permit"
+      ],
+      "setup": [
+        "Floral coolers ($8–20k)",
+        "Design workspace",
+        "Wire-service membership decision",
+        "Wholesale flower supplier"
+      ],
+      "staffing": "1–3 plus holiday temps",
+      "id": "florist",
+      "sector": "Retail — storefront"
+    },
+    "hair-salon": {
+      "label": "Hair salon",
+      "naics": "812112",
+      "costRatios": {
+        "cogs": 0.12,
+        "labor": 0.32,
+        "rent": 0.14,
+        "marketing": 0.06,
+        "other": 0.16
+      },
+      "demand": {
+        "hhSpend": 978,
+        "category": "Personal care products & services ($978/hh, BLS CEX 2024)",
+        "share": 0.55,
+        "inflow": 1.05
+      },
+      "startup": [
+        80000,
+        250000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "Salon benchmarks: staff labor 45–50% (owner-adjusted to 32%), rent 14%, product 12%, marketing 6%, net 8–15%, startup $80K–$250K (BizMetricsHQ).",
+      "sourceQuality": "cited",
+      "archetype": "appointment",
+      "hours": "45–60",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 4,
+        "skill": 3
+      },
+      "licenses": [
+        "State cosmetology license (owner & staff)",
+        "Salon establishment license",
+        "Board inspections"
+      ],
+      "setup": [
+        "Stations, chairs, wash basins ($20–45k)",
+        "Booking & POS software",
+        "Product lines & color inventory",
+        "Booth-rent vs commission model decision"
+      ],
+      "staffing": "3–8 stylists — retention is the business",
+      "id": "hair-salon",
+      "sector": "Personal care"
+    },
+    "barbershop": {
+      "label": "Barbershop",
+      "naics": "812111",
+      "costRatios": {
+        "cogs": 0.05,
+        "labor": 0.18,
+        "rent": 0.16,
+        "marketing": 0.04,
+        "other": 0.09
+      },
+      "demand": {
+        "hhSpend": 978,
+        "category": "Personal care ($978/hh, BLS CEX 2024) — barbering slice",
+        "share": 0.2,
+        "inflow": 1.05
+      },
+      "startup": [
+        20000,
+        120000
+      ],
+      "netMarginPct": "15–30%",
+      "source": "Booth-rent/solo barbering model: low labor line, owner keeps chair revenue (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "45–55",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 2,
+        "skill": 3
+      },
+      "licenses": [
+        "Barber license (owner & chairs)",
+        "Shop license",
+        "Board inspections"
+      ],
+      "setup": [
+        "Chairs & stations ($10–30k)",
+        "Booking app",
+        "Booth-rent vs employee model",
+        "Walk-in flow design"
+      ],
+      "staffing": "Solo or 2–6 chairs (booth-rent scales owner income)",
+      "id": "barbershop",
+      "sector": "Personal care"
+    },
+    "nail-salon": {
+      "label": "Nail salon",
+      "naics": "812113",
+      "costRatios": {
+        "cogs": 0.14,
+        "labor": 0.3,
+        "rent": 0.13,
+        "marketing": 0.05,
+        "other": 0.15
+      },
+      "demand": {
+        "hhSpend": 978,
+        "category": "Personal care ($978/hh, BLS CEX 2024) — nail slice",
+        "share": 0.25,
+        "inflow": 1.05
+      },
+      "startup": [
+        30000,
+        120000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "Nail salon modeled on personal-care service benchmarks.",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "45–60",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 4,
+        "skill": 3
+      },
+      "licenses": [
+        "State nail-technician licenses",
+        "Salon establishment license",
+        "Board inspections"
+      ],
+      "setup": [
+        "Stations & ventilation",
+        "Booking & POS",
+        "Product inventory",
+        "Sanitation workflow"
+      ],
+      "staffing": "3–8 techs",
+      "id": "nail-salon",
+      "sector": "Personal care"
+    },
+    "day-spa": {
+      "label": "Day spa / esthetics",
+      "naics": "812199",
+      "costRatios": {
+        "cogs": 0.12,
+        "labor": 0.36,
+        "rent": 0.15,
+        "marketing": 0.06,
+        "other": 0.13
+      },
+      "demand": {
+        "hhSpend": 978,
+        "category": "Personal care products & services ($978/hh, BLS CEX 2024)",
+        "share": 0.35,
+        "inflow": 1.1
+      },
+      "startup": [
+        100000,
+        400000
+      ],
+      "netMarginPct": "10–15%",
+      "source": "Spa cost structure modeled on salon benchmarks (BizMetricsHQ) with higher service labor.",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "45–60",
+      "difficulty": {
+        "reg": 3,
+        "cap": 4,
+        "staff": 4,
+        "skill": 3
+      },
+      "licenses": [
+        "Esthetician/massage licenses per service",
+        "Establishment license",
+        "Health inspections"
+      ],
+      "setup": [
+        "Treatment rooms buildout",
+        "Equipment (tables, steamers, tools)",
+        "Booking software & intake forms",
+        "Product retail line"
+      ],
+      "staffing": "3–8 licensed practitioners",
+      "id": "day-spa",
+      "sector": "Personal care"
+    },
+    "massage": {
+      "label": "Massage therapy",
+      "naics": "621399",
+      "costRatios": {
+        "cogs": 0.04,
+        "labor": 0.28,
+        "rent": 0.16,
+        "marketing": 0.06,
+        "other": 0.11
+      },
+      "demand": {
+        "hhSpend": 978,
+        "category": "Personal care ($978/hh, BLS CEX 2024) — massage slice",
+        "share": 0.15,
+        "inflow": 1.05
+      },
+      "startup": [
+        10000,
+        80000
+      ],
+      "netMarginPct": "15–30%",
+      "source": "Therapy-studio norms: solo or small-team service model (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "30–45 (hands-on limits)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 1,
+        "staff": 1,
+        "skill": 3
+      },
+      "licenses": [
+        "State massage therapy license",
+        "Establishment license",
+        "Liability insurance"
+      ],
+      "setup": [
+        "Room, table, linens ($3–15k)",
+        "Booking software",
+        "Intake/SOAP note system"
+      ],
+      "staffing": "Solo; add contractors to scale past your own hands",
+      "id": "massage",
+      "sector": "Personal care"
+    },
+    "gym": {
+      "label": "Gym / fitness center",
+      "naics": "713940",
+      "costRatios": {
+        "cogs": 0.05,
+        "labor": 0.3,
+        "rent": 0.2,
+        "marketing": 0.08,
+        "other": 0.17
+      },
+      "demand": {
+        "hhSpend": 3609,
+        "category": "Entertainment ($3,609/hh, BLS CEX 2024) — fitness slice",
+        "share": 0.12,
+        "inflow": 1.05
+      },
+      "startup": [
+        50000,
+        500000
+      ],
+      "netMarginPct": "10–15%",
+      "source": "Fitness-facility benchmarks: rent 15–25%, payroll ~30%, net 10–15% (published gym margin benchmarks).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 2,
+        "cap": 4,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Liability waivers & insurance",
+        "Music licensing",
+        "AED/CPR compliance"
+      ],
+      "setup": [
+        "Equipment package ($50–300k)",
+        "Access control & member software",
+        "Buildout: flooring, showers, HVAC",
+        "Trainer certifications"
+      ],
+      "staffing": "2–8 trainers/front desk; 24-hr models run leaner",
+      "id": "gym",
+      "sector": "Health, fitness & wellness"
+    },
+    "boutique-studio": {
+      "label": "Boutique studio (yoga / pilates / cycling)",
+      "naics": "713940",
+      "costRatios": {
+        "cogs": 0.04,
+        "labor": 0.34,
+        "rent": 0.2,
+        "marketing": 0.07,
+        "other": 0.14
+      },
+      "demand": {
+        "hhSpend": 3609,
+        "category": "Entertainment ($3,609/hh, BLS CEX 2024) — studio slice",
+        "share": 0.06,
+        "inflow": 1.05
+      },
+      "startup": [
+        30000,
+        150000
+      ],
+      "netMarginPct": "10–15%",
+      "source": "Boutique-studio benchmarks: instructor labor 30–40%, rent ~20% (studio industry norms).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "40–55",
+      "difficulty": {
+        "reg": 1,
+        "cap": 2,
+        "staff": 2,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Liability insurance & waivers",
+        "Instructor certifications (RYT)"
+      ],
+      "setup": [
+        "Studio space: flooring, mirrors, props",
+        "Booking/class software",
+        "Instructor roster"
+      ],
+      "staffing": "Owner-instructor plus 2–6 contract teachers",
+      "id": "boutique-studio",
+      "sector": "Health, fitness & wellness"
+    },
+    "dental": {
+      "label": "Dental practice",
+      "naics": "6212",
+      "costRatios": {
+        "cogs": 0.07,
+        "labor": 0.27,
+        "rent": 0.07,
+        "marketing": 0.03,
+        "other": 0.18
+      },
+      "demand": {
+        "hhSpend": 6197,
+        "category": "Healthcare ($6,197/hh, BLS CEX 2024) — dental slice",
+        "share": 0.06,
+        "inflow": 1.1
+      },
+      "startup": [
+        250000,
+        750000
+      ],
+      "netMarginPct": "25–40%",
+      "source": "Practice-management benchmarks: overhead typically 60–65% of collections, owner margin 35–40%.",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "40–50",
+      "difficulty": {
+        "reg": 5,
+        "cap": 5,
+        "staff": 3,
+        "skill": 5
+      },
+      "licenses": [
+        "DDS/DMD + state dental license",
+        "DEA registration",
+        "Radiology certifications",
+        "OSHA/HIPAA compliance"
+      ],
+      "setup": [
+        "Operatories & imaging ($200–500k)",
+        "Practice management software",
+        "Insurance credentialing (slow — start early)",
+        "Sterilization workflow"
+      ],
+      "staffing": "Hygienists, assistants, front desk (3–6)",
+      "id": "dental",
+      "sector": "Health, fitness & wellness"
+    },
+    "veterinary": {
+      "label": "Veterinary clinic",
+      "naics": "54194",
+      "costRatios": {
+        "cogs": 0.22,
+        "labor": 0.3,
+        "rent": 0.06,
+        "marketing": 0.02,
+        "other": 0.15
+      },
+      "demand": {
+        "hhSpend": 450,
+        "category": "Veterinary services (~$450/hh-yr, industry-typical)",
+        "share": 0.85,
+        "inflow": 1.1
+      },
+      "startup": [
+        250000,
+        1000000
+      ],
+      "netMarginPct": "10–18%",
+      "source": "Companion-animal practice norms: drugs/supplies ~22%, staff ~30% (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 4,
+        "cap": 5,
+        "staff": 3,
+        "skill": 5
+      },
+      "licenses": [
+        "DVM + state veterinary license",
+        "DEA registration",
+        "Controlled-substance logs"
+      ],
+      "setup": [
+        "Exam rooms, surgery, x-ray ($150–500k)",
+        "Practice management software",
+        "Lab & pharmacy inventory",
+        "Emergency referral relationships"
+      ],
+      "staffing": "Techs & front desk (3–8); vet shortage is real",
+      "id": "veterinary",
+      "sector": "Health, fitness & wellness"
+    },
+    "pharmacy": {
+      "label": "Pharmacy",
+      "naics": "44611",
+      "costRatios": {
+        "cogs": 0.76,
+        "labor": 0.11,
+        "rent": 0.03,
+        "marketing": 0.01,
+        "other": 0.04
+      },
+      "demand": {
+        "hhSpend": 6197,
+        "category": "Healthcare ($6,197/hh, BLS CEX 2024) — prescription slice",
+        "share": 0.13,
+        "inflow": 1.05
+      },
+      "startup": [
+        400000,
+        1200000
+      ],
+      "netMarginPct": "2–4%",
+      "source": "Independent pharmacy: COGS ~76%, thin net margins 2–4% (NCPA-style digest norms).",
+      "sourceQuality": "standard",
+      "archetype": "storefront",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 5,
+        "cap": 5,
+        "staff": 3,
+        "skill": 5
+      },
+      "licenses": [
+        "PharmD + state pharmacist license",
+        "DEA registration",
+        "State board of pharmacy permit",
+        "PBM/insurance contracts"
+      ],
+      "setup": [
+        "Dispensing & compliance systems",
+        "Inventory ($150k+)",
+        "PBM contracting (the hard part)",
+        "Delivery/sync services"
+      ],
+      "staffing": "Pharmacist coverage + 2–5 techs",
+      "id": "pharmacy",
+      "sector": "Health, fitness & wellness"
+    },
+    "plumbing": {
+      "label": "Plumbing",
+      "naics": "238220",
+      "costRatios": {
+        "cogs": 0.15,
+        "labor": 0.28,
+        "rent": 0.03,
+        "marketing": 0.07,
+        "other": 0.18
+      },
+      "demand": {
+        "hhSpend": 400,
+        "category": "Plumbing services (~$400/hh-yr, industry-typical)",
+        "share": 0.85,
+        "inflow": 1
+      },
+      "startup": [
+        20000,
+        150000
+      ],
+      "netMarginPct": "15–25%",
+      "source": "Plumbing: gross margin 50–60%, net 15–25%, materials 10–20%, marketing 5–12% (ProfitabilityPartners, 200+ contractor P&Ls).",
+      "sourceQuality": "cited",
+      "archetype": "homeservice",
+      "hours": "45–55 (+on-call)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 2,
+        "skill": 4
+      },
+      "licenses": [
+        "State master plumber license (years of apprenticeship)",
+        "Contractor registration",
+        "Bonding & insurance",
+        "Permit-pulling authority"
+      ],
+      "setup": [
+        "Service van & tools ($30–80k)",
+        "Field-service software (quotes, dispatch)",
+        "Parts supplier accounts",
+        "24/7 call handling"
+      ],
+      "staffing": "Solo to 3 techs; each van ≈ $250–400k/yr revenue",
+      "id": "plumbing",
+      "sector": "Home & trade services"
+    },
+    "hvac": {
+      "label": "HVAC / heating & cooling",
+      "naics": "238220",
+      "costRatios": {
+        "cogs": 0.2,
+        "labor": 0.27,
+        "rent": 0.03,
+        "marketing": 0.07,
+        "other": 0.18
+      },
+      "demand": {
+        "hhSpend": 550,
+        "category": "HVAC service & replacement (~$550/hh-yr amortized, industry-typical)",
+        "share": 0.85,
+        "inflow": 1
+      },
+      "startup": [
+        50000,
+        250000
+      ],
+      "netMarginPct": "12–22%",
+      "source": "HVAC: gross margin 45–55%, net 12–22%, materials 15–25%, marketing 5–12% (ProfitabilityPartners, 200+ contractor P&Ls).",
+      "sourceQuality": "cited",
+      "archetype": "homeservice",
+      "hours": "45–55 (seasonal peaks)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 2,
+        "skill": 4
+      },
+      "licenses": [
+        "State HVAC contractor license",
+        "EPA 608 refrigerant certification",
+        "Contractor registration & bonding"
+      ],
+      "setup": [
+        "Service van, gauges, recovery equipment",
+        "Field-service software",
+        "Distributor accounts (equipment margins)",
+        "Maintenance-plan program"
+      ],
+      "staffing": "Solo to 4 techs",
+      "id": "hvac",
+      "sector": "Home & trade services"
+    },
+    "electrical": {
+      "label": "Electrical",
+      "naics": "238210",
+      "costRatios": {
+        "cogs": 0.14,
+        "labor": 0.27,
+        "rent": 0.03,
+        "marketing": 0.06,
+        "other": 0.19
+      },
+      "demand": {
+        "hhSpend": 350,
+        "category": "Electrical services (~$350/hh-yr, industry-typical)",
+        "share": 0.85,
+        "inflow": 1
+      },
+      "startup": [
+        15000,
+        120000
+      ],
+      "netMarginPct": "15–22%",
+      "source": "Electrical: gross margin 52–65%, net 15–22%, materials 10–18% — highest-margin trade (ProfitabilityPartners, 200+ contractor P&Ls).",
+      "sourceQuality": "cited",
+      "archetype": "homeservice",
+      "hours": "45–55",
+      "difficulty": {
+        "reg": 4,
+        "cap": 2,
+        "staff": 2,
+        "skill": 5
+      },
+      "licenses": [
+        "Journeyman → master electrician license (4+ yrs)",
+        "Contractor license",
+        "Permits & inspections on most jobs"
+      ],
+      "setup": [
+        "Van & test equipment",
+        "Field-service software",
+        "Supplier accounts",
+        "Panel/EV-charger specialization decision"
+      ],
+      "staffing": "Solo to 3",
+      "id": "electrical",
+      "sector": "Home & trade services"
+    },
+    "roofing": {
+      "label": "Roofing",
+      "naics": "238160",
+      "costRatios": {
+        "cogs": 0.35,
+        "labor": 0.25,
+        "rent": 0.02,
+        "marketing": 0.07,
+        "other": 0.13
+      },
+      "demand": {
+        "hhSpend": 500,
+        "category": "Roof repair/replacement (~$500/hh-yr amortized, industry-typical)",
+        "share": 0.8,
+        "inflow": 1
+      },
+      "startup": [
+        20000,
+        150000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "Roofing: gross 35–40%, net 8–15%, materials ~35% of every job (ProfitabilityPartners, 200+ contractor P&Ls).",
+      "sourceQuality": "cited",
+      "archetype": "homeservice",
+      "hours": "50–60 (weather-driven)",
+      "difficulty": {
+        "reg": 3,
+        "cap": 3,
+        "staff": 4,
+        "skill": 3
+      },
+      "licenses": [
+        "Contractor license",
+        "Workers comp (high-rate trade)",
+        "Fall-protection/OSHA compliance"
+      ],
+      "setup": [
+        "Crew equipment & safety gear",
+        "Material supplier accounts",
+        "Insurance-claim workflow expertise",
+        "Storm-response capability"
+      ],
+      "staffing": "Crews of 3–6 — crew reliability is the constraint",
+      "id": "roofing",
+      "sector": "Home & trade services"
+    },
+    "painting": {
+      "label": "Painting (interior / exterior)",
+      "naics": "238320",
+      "costRatios": {
+        "cogs": 0.22,
+        "labor": 0.28,
+        "rent": 0.02,
+        "marketing": 0.06,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 300,
+        "category": "Painting services (~$300/hh-yr, industry-typical)",
+        "share": 0.7,
+        "inflow": 1
+      },
+      "startup": [
+        5000,
+        50000
+      ],
+      "netMarginPct": "15–30%",
+      "source": "Painting contractor: materials-light, labor-driven owner-operator (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "45–55 (seasonal)",
+      "difficulty": {
+        "reg": 2,
+        "cap": 1,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Contractor registration",
+        "Liability insurance"
+      ],
+      "setup": [
+        "Sprayers, ladders, vehicle",
+        "Estimating/invoicing app",
+        "Supplier accounts",
+        "Crew plan"
+      ],
+      "staffing": "Solo to crews of 2–4",
+      "id": "painting",
+      "sector": "Home & trade services"
+    },
+    "general-contractor": {
+      "label": "General contractor / remodeling",
+      "naics": "236118",
+      "costRatios": {
+        "cogs": 0.58,
+        "labor": 0.12,
+        "rent": 0.03,
+        "marketing": 0.05,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 1600,
+        "category": "Home remodeling & additions (~$1,600/hh-yr amortized, industry-typical)",
+        "share": 0.55,
+        "inflow": 1
+      },
+      "startup": [
+        20000,
+        150000
+      ],
+      "netMarginPct": "8–15%",
+      "source": "GC/remodeling: subcontractor-heavy COGS, project margins (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 4,
+        "cap": 3,
+        "staff": 3,
+        "skill": 4
+      },
+      "licenses": [
+        "State contractor license",
+        "Bonding & insurance",
+        "Permits per job"
+      ],
+      "setup": [
+        "Tools & vehicle",
+        "Estimating/PM software",
+        "Sub & supplier network",
+        "Permit workflow"
+      ],
+      "staffing": "Owner + subs; small crew",
+      "id": "general-contractor",
+      "sector": "Home & trade services"
+    },
+    "landscaping": {
+      "label": "Landscaping / lawn care",
+      "naics": "561730",
+      "costRatios": {
+        "cogs": 0.1,
+        "labor": 0.3,
+        "rent": 0.02,
+        "marketing": 0.05,
+        "other": 0.15
+      },
+      "demand": {
+        "hhSpend": 600,
+        "category": "Lawn & landscape services (~$600/hh-yr, industry-typical)",
+        "share": 0.6,
+        "inflow": 1
+      },
+      "startup": [
+        15000,
+        100000
+      ],
+      "netMarginPct": "10–20%",
+      "source": "Landscaping owner-operator norms: equipment/fuel-heavy, labor ~30% with crew (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "50–60 in season",
+      "difficulty": {
+        "reg": 1,
+        "cap": 2,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Pesticide applicator license (if treating)",
+        "Trailer/vehicle registration"
+      ],
+      "setup": [
+        "Truck, trailer, mowers, trimmers ($20–60k)",
+        "Route-density planning",
+        "Recurring-contract templates",
+        "Winter revenue plan (snow/cleanups)"
+      ],
+      "staffing": "Solo to crews of 2–4",
+      "id": "landscaping",
+      "sector": "Home & trade services"
+    },
+    "cleaning": {
+      "label": "Cleaning (home / commercial)",
+      "naics": "561720",
+      "costRatios": {
+        "cogs": 0.06,
+        "labor": 0.38,
+        "rent": 0.02,
+        "marketing": 0.06,
+        "other": 0.09
+      },
+      "demand": {
+        "hhSpend": 600,
+        "category": "Housekeeping services (~$600/hh-yr, industry-typical)",
+        "share": 0.35,
+        "inflow": 1
+      },
+      "startup": [
+        5000,
+        50000
+      ],
+      "netMarginPct": "10–20%",
+      "source": "Residential/commercial cleaning: labor-dominant, minimal overhead (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "40–50",
+      "difficulty": {
+        "reg": 1,
+        "cap": 1,
+        "staff": 3,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Bonding & insurance (client trust)"
+      ],
+      "setup": [
+        "Supplies & equipment ($2–10k)",
+        "Scheduling software",
+        "Checklists & quality system",
+        "Recurring-client contracts"
+      ],
+      "staffing": "Solo to teams of 2–6 — turnover is the challenge",
+      "id": "cleaning",
+      "sector": "Home & trade services"
+    },
+    "handyman": {
+      "label": "Handyman / general repair",
+      "naics": "811490",
+      "costRatios": {
+        "cogs": 0.15,
+        "labor": 0.08,
+        "rent": 0.01,
+        "marketing": 0.05,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 350,
+        "category": "Small home repairs (~$350/hh-yr, industry-typical)",
+        "share": 0.7,
+        "inflow": 1
+      },
+      "startup": [
+        5000,
+        40000
+      ],
+      "netMarginPct": "20–40%",
+      "source": "Solo-operator model: owner labor is the product; minimal fixed costs (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "40–50",
+      "difficulty": {
+        "reg": 2,
+        "cap": 1,
+        "staff": 1,
+        "skill": 3
+      },
+      "licenses": [
+        "Business license",
+        "Handyman registration (state caps on job size)",
+        "Liability insurance"
+      ],
+      "setup": [
+        "Truck & tool set",
+        "Quoting/invoicing app",
+        "Clear service menu with pricing"
+      ],
+      "staffing": "Solo by design",
+      "id": "handyman",
+      "sector": "Home & trade services"
+    },
+    "pest-control": {
+      "label": "Pest control",
+      "naics": "561710",
+      "costRatios": {
+        "cogs": 0.1,
+        "labor": 0.3,
+        "rent": 0.03,
+        "marketing": 0.08,
+        "other": 0.19
+      },
+      "demand": {
+        "hhSpend": 220,
+        "category": "Pest control (~$220/hh-yr, recurring, industry-typical)",
+        "share": 0.7,
+        "inflow": 1
+      },
+      "startup": [
+        10000,
+        80000
+      ],
+      "netMarginPct": "15–25%",
+      "source": "Pest control: recurring-service model, applicator-licensed (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "homeservice",
+      "hours": "45–55",
+      "difficulty": {
+        "reg": 3,
+        "cap": 2,
+        "staff": 2,
+        "skill": 3
+      },
+      "licenses": [
+        "State pesticide applicator license",
+        "Business license",
+        "Insurance"
+      ],
+      "setup": [
+        "Service vehicle & equipment",
+        "Route/scheduling software",
+        "Chemical supplier accounts",
+        "Recurring plans"
+      ],
+      "staffing": "Solo to 3 techs",
+      "id": "pest-control",
+      "sector": "Home & trade services"
+    },
+    "auto-repair": {
+      "label": "Auto repair & service",
+      "naics": "811111",
+      "costRatios": {
+        "cogs": 0.35,
+        "labor": 0.28,
+        "rent": 0.08,
+        "marketing": 0.03,
+        "other": 0.1
+      },
+      "demand": {
+        "hhSpend": 1000,
+        "category": "Vehicle maintenance & repair (~$1,000/hh, CEX-typical)",
+        "share": 0.85,
+        "inflow": 1.1
+      },
+      "startup": [
+        50000,
+        250000
+      ],
+      "netMarginPct": "10–20%",
+      "source": "Parts gross-profit target 58%, labor $120–159/hr (PartsTech 2025 survey of 752 shops); blended cost structure owner-adjusted.",
+      "sourceQuality": "cited",
+      "archetype": "homeservice",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 3,
+        "cap": 4,
+        "staff": 3,
+        "skill": 4
+      },
+      "licenses": [
+        "State repair shop registration",
+        "EPA compliance (fluids, refrigerant)",
+        "ASE certifications (credibility)"
+      ],
+      "setup": [
+        "Lifts & diagnostics ($40–120k)",
+        "Bay buildout",
+        "Parts supplier accounts",
+        "Shop management software"
+      ],
+      "staffing": "2–6 techs — good techs are scarce",
+      "id": "auto-repair",
+      "sector": "Home & trade services"
+    },
+    "car-wash": {
+      "label": "Car wash / detailing",
+      "naics": "811192",
+      "costRatios": {
+        "cogs": 0.1,
+        "labor": 0.18,
+        "rent": 0.12,
+        "marketing": 0.03,
+        "other": 0.2
+      },
+      "demand": {
+        "hhSpend": 250,
+        "category": "Car washing & detailing (~$250/hh-yr, industry-typical)",
+        "share": 0.7,
+        "inflow": 1.25
+      },
+      "startup": [
+        50000,
+        400000
+      ],
+      "netMarginPct": "15–30%",
+      "source": "Wash/detail economics: utilities & equipment heavy, strong roadside inflow (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "passive",
+      "hours": "25–45",
+      "difficulty": {
+        "reg": 2,
+        "cap": 4,
+        "staff": 2,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Water discharge/reclaim permits",
+        "Environmental compliance"
+      ],
+      "setup": [
+        "Wash equipment ($50–300k by format)",
+        "Water reclaim system",
+        "Payment kiosks/membership app",
+        "Lot with road visibility"
+      ],
+      "staffing": "Self-serve: minimal; full-serve: 3–8",
+      "id": "car-wash",
+      "sector": "Home & trade services"
+    },
+    "childcare": {
+      "label": "Childcare / daycare",
+      "naics": "624410",
+      "costRatios": {
+        "cogs": 0.08,
+        "labor": 0.47,
+        "rent": 0.12,
+        "marketing": 0.02,
+        "other": 0.13
+      },
+      "demand": {
+        "hhSpend": 1300,
+        "category": "Childcare & education spend (~$1,300/hh-yr averaged across all households)",
+        "share": 0.8,
+        "inflow": 1
+      },
+      "startup": [
+        50000,
+        300000
+      ],
+      "netMarginPct": "10–15%",
+      "source": "Daycare: payroll ~47% of revenue (state-mandated ratios), net margins 10–15% (VantaInsights industry benchmarks).",
+      "sourceQuality": "cited",
+      "archetype": "care",
+      "hours": "50–60",
+      "difficulty": {
+        "reg": 5,
+        "cap": 3,
+        "staff": 5,
+        "skill": 3
+      },
+      "licenses": [
+        "State childcare license (background checks, ratios, facility standards)",
+        "CPR/first-aid certifications",
+        "Fire & health inspections",
+        "Staff credential requirements"
+      ],
+      "setup": [
+        "Facility meeting code (space per child)",
+        "Age-appropriate rooms & playground",
+        "Enrollment & parent-communication software",
+        "Curriculum & daily schedule"
+      ],
+      "staffing": "Ratio-mandated: 1 adult per 4–10 children by age — staffing IS the business",
+      "id": "childcare",
+      "sector": "Care & pet services"
+    },
+    "pet-grooming": {
+      "label": "Pet grooming / boarding",
+      "naics": "812910",
+      "costRatios": {
+        "cogs": 0.1,
+        "labor": 0.35,
+        "rent": 0.12,
+        "marketing": 0.05,
+        "other": 0.13
+      },
+      "demand": {
+        "hhSpend": 3609,
+        "category": "Pet services (Entertainment $3,609/hh — pet-services slice)",
+        "share": 0.12,
+        "inflow": 1.05
+      },
+      "startup": [
+        20000,
+        150000
+      ],
+      "netMarginPct": "10–20%",
+      "source": "Pet grooming/boarding: service-labor model (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "appointment",
+      "hours": "45–60",
+      "difficulty": {
+        "reg": 2,
+        "cap": 3,
+        "staff": 3,
+        "skill": 2
+      },
+      "licenses": [
+        "Business license",
+        "Animal-care permits (boarding)",
+        "Insurance"
+      ],
+      "setup": [
+        "Grooming stations / kennels",
+        "Booking software",
+        "Supplies",
+        "Sanitation workflow"
+      ],
+      "staffing": "2–6",
+      "id": "pet-grooming",
+      "sector": "Care & pet services"
+    },
+    "bookkeeping": {
+      "label": "Bookkeeping / tax prep",
+      "naics": "541219",
+      "costRatios": {
+        "cogs": 0.02,
+        "labor": 0.12,
+        "rent": 0.04,
+        "marketing": 0.06,
+        "other": 0.12
+      },
+      "demand": {
+        "hhSpend": 300,
+        "category": "Tax prep & financial services (~$300/hh-yr, industry-typical; excludes B2B upside)",
+        "share": 0.6,
+        "inflow": 1
+      },
+      "startup": [
+        2000,
+        25000
+      ],
+      "netMarginPct": "30–60%",
+      "source": "Solo professional-services model: near-zero COGS, home-office viable; B2B clients add revenue beyond the household base modeled here.",
+      "sourceQuality": "standard",
+      "archetype": "professional",
+      "hours": "30–45 (seasonal spikes)",
+      "difficulty": {
+        "reg": 2,
+        "cap": 1,
+        "staff": 1,
+        "skill": 3
+      },
+      "licenses": [
+        "Business license",
+        "PTIN (for tax prep)",
+        "E&O insurance",
+        "CPA/EA credential (optional, raises rates)"
+      ],
+      "setup": [
+        "Software stack (QuickBooks ProAdvisor, tax software)",
+        "Engagement letter templates",
+        "Secure document portal",
+        "Niche selection (trades? restaurants?)"
+      ],
+      "staffing": "Solo; subcontract overflow",
+      "id": "bookkeeping",
+      "sector": "Professional & office"
+    },
+    "pro-services": {
+      "label": "Professional / office services (consulting, agency, insurance, real estate)",
+      "naics": "54",
+      "costRatios": {
+        "cogs": 0.03,
+        "labor": 0.15,
+        "rent": 0.05,
+        "marketing": 0.06,
+        "other": 0.16
+      },
+      "demand": {
+        "hhSpend": 400,
+        "category": "Household professional services (~$400/hh-yr; excludes B2B upside)",
+        "share": 0.5,
+        "inflow": 1
+      },
+      "startup": [
+        3000,
+        40000
+      ],
+      "netMarginPct": "30–60%",
+      "source": "Solo professional services: near-zero COGS; B2B clients add revenue beyond the household base modeled here (industry-typical).",
+      "sourceQuality": "standard",
+      "archetype": "professional",
+      "hours": "40–50",
+      "difficulty": {
+        "reg": 2,
+        "cap": 1,
+        "staff": 1,
+        "skill": 3
+      },
+      "licenses": [
+        "Business license",
+        "Professional license/credential as applicable",
+        "E&O insurance"
+      ],
+      "setup": [
+        "Software stack",
+        "Engagement templates",
+        "Secure client portal",
+        "Niche focus"
+      ],
+      "staffing": "Solo; subcontract overflow",
+      "id": "pro-services",
+      "sector": "Professional & office"
+    },
+    "laundromat": {
+      "label": "Laundromat / self-serve laundry",
+      "naics": "812310",
+      "costRatios": {
+        "cogs": 0.02,
+        "labor": 0.12,
+        "rent": 0.22,
+        "marketing": 0.02,
+        "other": 0.32
+      },
+      "demand": {
+        "hhSpend": 160,
+        "category": "Laundry services (~$160/hh-yr, industry-typical)",
+        "share": 0.75,
+        "inflow": 1.1
+      },
+      "startup": [
+        200000,
+        500000
+      ],
+      "netMarginPct": "20–35%",
+      "source": "Laundromat net margins 20–35%; utilities & machine costs dominate (VantaInsights industry benchmarks).",
+      "sourceQuality": "cited",
+      "archetype": "passive",
+      "hours": "15–30 (semi-passive)",
+      "difficulty": {
+        "reg": 2,
+        "cap": 5,
+        "staff": 1,
+        "skill": 1
+      },
+      "licenses": [
+        "Business license",
+        "Water/sewer permits",
+        "ADA compliance"
+      ],
+      "setup": [
+        "Washers/dryers ($150–400k — the whole investment)",
+        "Water heating & utility infrastructure",
+        "Card/app payment system",
+        "Camera & remote monitoring"
+      ],
+      "staffing": "Unattended or 1 part-time attendant",
+      "id": "laundromat",
+      "sector": "Other"
+    }
+  }
+};window.ZL_REPORT_CSS="/* Report components — shared by the on-screen report and the downloaded file. */\n:root{\n  --ink:#0B1B2E;--ink-2:#081420;--primary:#3D5AFE;--primary-600:#2E45D8;\n  --go:#22C55E;--go-600:#16A34A;--amber:#F59E0B;--red:#EF4444;\n  --bg-soft:#F5F7FC;--bg-softer:#EAEFFA;--line:#E1E7F2;--muted:#5A6B84;--muted-2:#8A97AC;\n  --fh:'Sora',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;\n  --fb:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;\n}\n.zl-rt{font-family:var(--fh);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);margin:0 0 14px}\nh4.sub{font-family:var(--fh);font-weight:700;font-size:1rem;color:var(--ink);margin:20px 0 8px}\n/* verdict */\n.rv{border-radius:14px;padding:18px 20px;color:#fff;margin:0 0 16px}\n.rv.go{background:linear-gradient(135deg,var(--go),var(--go-600))}\n.rv.no{background:linear-gradient(135deg,#F87171,var(--red))}\n.rv.warn{background:linear-gradient(135deg,#FBBF24,var(--amber))}\n.rv.neutral{background:linear-gradient(135deg,var(--primary),var(--primary-600))}\n.rvb{font-family:var(--fh);font-weight:800;font-size:1.35rem;line-height:1.12;letter-spacing:-.02em}\n.rvs{opacity:.95;margin-top:.35rem;font-size:.96rem}\n/* tiles */\n.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}\n.tile{background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px}\n.tile .k{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);font-weight:600}\n.tile .v{font-family:var(--fh);font-weight:800;font-size:1.35rem;color:var(--ink);margin-top:.1rem;letter-spacing:-.02em}\n.tile .v.up{color:var(--go-600)}.tile .v.dn{color:var(--red)}\n.tile .n{font-size:.72rem;color:var(--muted);margin-top:.15rem}\n/* callout + source */\n.callout{background:var(--bg-soft);border-left:3px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}\n.callout b{font-family:var(--fh)}\n.srcline{font-size:.8rem;color:var(--muted);margin-top:14px}\n/* funnel */\n.fnl{display:grid;gap:7px;margin:10px 0}\n.fnlrow{display:flex;align-items:center;gap:8px}\n.fbar{height:28px;min-width:88px;border-radius:6px;background:linear-gradient(90deg,var(--primary),var(--go));display:flex;align-items:center;padding:0 10px;color:#fff;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.1)}\n.fbar span{font-family:var(--fh);font-weight:700;font-size:.72rem;white-space:nowrap}\n.fval{font-family:var(--fh);font-weight:700;font-size:.82rem;color:var(--ink)}\n.fnote{font-size:.72rem;color:var(--muted-2)}\n/* table */\ntable.rep{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}\ntable.rep th{font-family:var(--fh);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:left;padding:0 8px 6px;font-weight:600}\ntable.rep td{padding:7px 8px;border-top:1px solid var(--line)}\ntable.rep td.n,table.rep th.n{text-align:right;font-variant-numeric:tabular-nums}\ntable.rep tr.is-go{background:rgba(34,197,94,.05)}\n.pill{display:inline-block;font-family:var(--fh);font-weight:700;font-size:.66rem;padding:.12rem .45rem;border-radius:5px}\n.pill.go{background:#DCFCE7;color:#15803D}.pill.no{background:#FEE2E2;color:#B91C1C}\n/* playbook cols */\n.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}\n.mini h4{font-family:var(--fh);font-size:.92rem;margin-bottom:.4rem;color:var(--ink)}\n.mini ul{list-style:none;display:grid;gap:.35rem;margin:0;padding:0}\n.mini li{font-size:.88rem;color:var(--ink);padding-left:1.1rem;position:relative}\n.mini li:before{content:\"›\";position:absolute;left:.1rem;color:var(--primary);font-weight:800}\n.mininote{font-size:.82rem;color:var(--muted);margin-top:.6rem}\n/* complete-report sections */\n.csec{border-top:2px solid var(--line);padding-top:20px;margin-top:24px}\n.csec-h{font-family:var(--fh);font-weight:800;font-size:1.2rem;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:.6rem}\n.csec-n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--primary);color:#fff;font-size:.9rem;flex:none}\n/* download-doc wrapper */\n.doc{max-width:820px;margin:0 auto;padding:34px 40px 44px;font-family:var(--fb);color:var(--ink);background:#fff;line-height:1.55}\n.brandbar{display:flex;align-items:center;gap:.5rem;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:20px;font-family:var(--fh)}\n.brandbar b{color:var(--primary)}.brandbar span{color:var(--muted-2);font-size:.82rem;font-family:var(--fb)}\n.disc{color:var(--muted-2);font-size:.78rem;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}\n@media(max-width:560px){.cols2{grid-template-columns:1fr}.doc{padding:24px 20px}}\n";</script>
+<script>/* ============================================================================
+   ZIPSIGHT LAB — self-contained in-browser report generator.
+   No backend, no email, no human. Inputs (ZIP + categorical business) → live
+   US Census pull → deterministic ZIP core math → report rendered on screen →
+   downloadable/printable deliverable. Paywall is a client-side reveal (a small
+   backend is required for true payment verification — see the site FAQ).
+   Depends on: window.ZIP (zipcore), window.ZIP_CATEGORIES (taxonomy).
+   ========================================================================== */
+(function () {
+  'use strict';
+  var CAT = window.ZIP_CATEGORIES, NAT = ZIP.NAT;
+  var money = ZIP.money, pct = ZIP.pct;
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+
+  /* ---- tiny persistence (works on the live site; degrades in sandboxes) ---- */
+  var mem = {};
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) { mem[k] = v; } }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return mem[k] || null; } }
+  function isUnlocked(slug) { return load('zl_unlocked_' + slug) === '1'; }
+  function markUnlocked(slug) { store('zl_unlocked_' + slug, '1'); }
+
+  /* ---- component builders (match the real report's look) ---- */
+  function tiles(arr) {
+    return '<div class="tiles">' + arr.map(function (t) {
+      return '<div class="tile"><div class="k">' + t[0] + '</div><div class="v ' + (t[2] || '') + '">' + t[1] + '</div>' +
+        (t[3] ? '<div class="n">' + t[3] + '</div>' : '') + '</div>';
+    }).join('') + '</div>';
+  }
+  function verdict(kind, big, sub) { return '<div class="rv ' + kind + '"><div class="rvb">' + big + '</div><div class="rvs">' + sub + '</div></div>'; }
+  function callout(html) { return '<div class="callout">' + html + '</div>'; }
+  function srcline(cat) {
+    var q = cat.sourceQuality === 'cited' ? 'cited benchmark' : 'industry-standard default';
+    return '<p class="srcline"><b>Basis for ' + esc(cat.label) + ':</b> ' + esc(cat.source || '') + ' <em>(' + q + ')</em></p>';
+  }
+  function funnelBars(f) {
+    var rows = [
+      ['TAM', f.tam, 'all local spending'],
+      ['SAM', f.sam, 'your format’s slice'],
+      ['Accessible', f.accessible, '← your real target'],
+      ['Captured', f.base, 'what you’d earn']
+    ];
+    var wmax = f.tam || 1;
+    return '<div class="fnl">' + rows.map(function (r, i) {
+      var w = Math.max(14, Math.round(100 * r[1] / wmax) * (i === 0 ? 1 : 1));
+      w = Math.max(14, Math.min(100, Math.round(100 * r[1] / wmax)));
+      return '<div class="fnlrow"><div class="fbar" style="width:' + Math.max(w, 16) + '%"><span>' + r[0] + '</span></div>' +
+        '<b class="fval">' + shortMoney(r[1]) + '</b><span class="fnote">' + r[2] + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function shortMoney(n) {
+    if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'k';
+    return money(n);
+  }
+  function scenarioTable(f, target) {
+    var rows = f.scenarios.map(function (s) {
+      return '<tr><td>' + s.name + '</td><td class="n">' + money(s.rev) + '</td><td class="n">' + money(s.ownerAfter) +
+        '</td><td class="n"><span class="pill ' + (s.clears ? 'go' : 'no') + '">' + (s.clears ? 'clears' : 'short') + '</span></td></tr>';
+    }).join('');
+    return '<table class="rep"><thead><tr><th>Scenario</th><th class="n">Revenue</th><th class="n">Owner after tax</th><th class="n">$' + Math.round(target / 1000) + 'k?</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+  function signed(n) { return (n >= 0 ? '+' : '') + n.toFixed(1) + '%'; }
+
+  /* ---- REPORT RENDERERS — each returns {title, summary, detail} ---- */
+
+  function renderKYC(ctx) {
+    var d = ctx.demo, inc = d.income, hh = d.households;
+    var incD = inc ? 100 * (inc - NAT.medianHH) / NAT.medianHH : null;
+    var homeD = d.medianHome ? 100 * (d.medianHome - NAT.medianHome) / NAT.medianHome : null;
+    var eduD = d.bachPct != null ? d.bachPct - NAT.bachPct : null;
+    var summary = verdict('neutral', esc(ctx.place) + ' — ' + (hh ? hh.toLocaleString() : '—') + ' households',
+      (inc ? 'Median income ' + money(inc) + (incD != null ? ' (' + signed(incD) + ' vs US)' : '') : '') + '. Here’s who you’d be selling to.');
+    var t = [
+      ['Population', d.population ? d.population.toLocaleString() : '—', '', 'in the trade area'],
+      ['Households', hh ? hh.toLocaleString() : '—', '', 'your customer base'],
+      ['Median income', inc ? money(inc) : '—', incD != null && incD >= 0 ? 'up' : 'dn', incD != null ? signed(incD) + ' vs US' : ''],
+      ['Median age', d.medianAge != null ? d.medianAge : '—', '', 'US ' + NAT.medianAge],
+      ['Median home', d.medianHome ? money(d.medianHome) : '—', homeD != null && homeD >= 0 ? 'up' : 'dn', homeD != null ? signed(homeD) + ' vs US' : ''],
+      ['Bachelor’s+', d.bachPct != null ? d.bachPct + '%' : '—', eduD != null && eduD >= 0 ? 'up' : 'dn', eduD != null ? (eduD >= 0 ? '+' : '') + eduD.toFixed(0) + ' pts vs US' : '']
+    ];
+    var read = 'This is the pool every business here draws on. ';
+    if (incD != null && incD > 15) read += 'Above-average spending power — you can price toward the top of your range. ';
+    else if (incD != null && incD < -10) read += 'Below-average income — compete on value and volume, not premium pricing. ';
+    if (hh && hh < 3000) read += 'It’s a shallow pool (' + hh.toLocaleString() + ' households), so what you open matters more than almost anywhere.';
+    else if (hh) read += 'A workable base of ' + hh.toLocaleString() + ' households to build on.';
+    var detail = tiles(t) + callout('<b>The read, plainly.</b> ' + read) +
+      '<p class="srcline"><b>Source:</b> US Census ACS 5-year, by ZIP code tabulation area. National benchmarks: median income ' + money(NAT.medianHH) + ', median age ' + NAT.medianAge + ', bachelor’s+ ' + NAT.bachPct + '%.</p>';
+    return { title: 'Know Your Customers · ' + esc(ctx.place), summary: summary, detail: detail };
+  }
+
+  function renderCompetition(ctx) {
+    var f = ZIP.computeFunnel({ industry: ctx.cat, households: ctx.demo.households, income: ctx.demo.income, nearbyCompetitors: ctx.N });
+    var capRatio = f.goRevenue > 0 ? f.accessible / f.goRevenue : 0;
+    var crowded = capRatio >= 2.5 ? 'wide open' : capRatio >= 1.3 ? 'workable' : capRatio >= 1 ? 'tight' : 'saturated';
+    var kind = capRatio >= 1.3 ? 'go' : capRatio >= 1 ? 'warn' : 'no';
+    var summary = verdict(kind, 'Your opening here: ' + crowded,
+      'With ' + ctx.N + ' rival ' + esc(ctx.cat.label.toLowerCase()) + (ctx.N === 1 ? '' : 's') + ' nearby, ' + money(f.accessible) + ' in demand is realistically up for grabs.');
+    var detail = tiles([
+      ['Total format demand (SAM)', money(f.sam), '', 'spending your format serves'],
+      ['Held by rivals', money(f.sam - f.accessible), '', ctx.N + ' competitors assumed'],
+      ['Unclaimed / winnable', money(f.accessible), '', 'what a newcomer can fight for'],
+      ['Your fair share', pct(f.fairShare), '', '1 of ' + (ctx.N + 1) + ' players']
+    ]) + callout('<b>How crowded is it?</b> A new ' + esc(ctx.cat.label.toLowerCase()) + ' would need about <b>' + money(f.goRevenue) +
+      '</b> in revenue to pay an owner the $80k target. The winnable pool here is <b>' + money(f.accessible) + '</b> — ' +
+      (capRatio >= 1.3 ? 'comfortably more than you need, so there’s room to enter.' :
+        capRatio >= 1 ? 'about what you need, so execution has to be sharp.' :
+          'less than you need — this market looks saturated for this format.') + '</p>') +
+      '<p class="srcline"><b>Note:</b> competitor count is your input (default 2) — the single biggest swing factor. Enter the real number of nearby ' + esc(ctx.cat.label.toLowerCase()) + 's for a sharper read.</p>' + srcline(ctx.cat);
+    return { title: 'Competition Report · ' + esc(ctx.cat.label), summary: summary, detail: detail };
+  }
+
+  function renderTownScan(ctx) {
+    var ids = Object.keys(CAT.byId);
+    var rows = ids.map(function (id) {
+      var c = CAT.byId[id];
+      var f = ZIP.computeFunnel({ industry: c, households: ctx.demo.households, income: ctx.demo.income, nearbyCompetitors: 2 });
+      return { label: c.label, verdict: f.verdict, owner: Math.round(f.expAfter), rev: Math.round(f.goRevenue) };
+    }).sort(function (a, b) { return b.owner - a.owner; });
+    var go = rows.filter(function (r) { return r.verdict === 'GO'; }).length;
+    var summary = verdict(go > 0 ? 'go' : 'warn', go + ' of ' + rows.length + ' formats clear the $80k test',
+      'in ' + esc(ctx.place) + '. Top opportunity: ' + esc(rows[0].label) + ' (' + money(rows[0].owner) + ' owner take).');
+    var body = rows.map(function (r, i) {
+      return '<tr class="' + (r.verdict === 'GO' ? 'is-go' : '') + '"><td class="n">' + (i + 1) + '</td><td>' + esc(r.label) +
+        '</td><td class="n"><span class="pill ' + (r.verdict === 'GO' ? 'go' : 'no') + '">' + r.verdict + '</span></td>' +
+        '<td class="n"><b>' + money(r.owner) + '</b></td><td class="n">' + money(r.rev) + '</td></tr>';
+    }).join('');
+    var detail = '<table class="rep"><thead><tr><th class="n">#</th><th>Business format</th><th class="n">Verdict</th><th class="n">Owner take</th><th class="n">Revenue needed</th></tr></thead><tbody>' + body + '</tbody></table>' +
+      callout('<b>The pattern.</b> Only <b>' + go + ' of ' + rows.length + '</b> formats can pay an owner a real living in this town. The winners cluster where local demand is deep and margins survive; the rest are fine businesses elsewhere, just not here at a full owner wage.') +
+      '<p class="srcline"><b>Assumption:</b> 2 nearby competitors per format (the scan’s standard baseline). Owner take is steady-state, after tax, vs the $80,000 target.</p>';
+    return { title: 'The Town Scan · ' + esc(ctx.place), summary: summary, detail: detail };
+  }
+
+  function playbookScore(ctx, f) {
+    var d = ctx.cat.difficulty || { reg: 3, cap: 3, staff: 3, skill: 3 };
+    var comp = d.reg + d.cap + d.staff + d.skill;
+    return tiles([
+      ['Owner take (yr 3+)', money(f.expAfter), f.verdict === 'GO' ? 'up' : 'dn', 'after tax'],
+      ['Startup range', money(ctx.cat.startup[0]) + '–' + money(ctx.cat.startup[1]), '', 'typical buildout'],
+      ['Difficulty', comp + '/20', '', 'reg ' + d.reg + ' · cap ' + d.cap + ' · staff ' + d.staff + ' · skill ' + d.skill],
+      ['Owner hours', (ctx.cat.hours || '—'), '', 'per week']
+    ]);
+  }
+  function playbookLists(ctx) {
+    var lic = (ctx.cat.licenses || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
+    var set = (ctx.cat.setup || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
+    return '<div class="cols2"><div class="mini"><h4>Licenses &amp; permits</h4><ul>' + lic + '</ul></div>' +
+      '<div class="mini"><h4>What it takes to open</h4><ul>' + set + '</ul>' +
+      '<p class="mininote"><b>Staffing:</b> ' + esc(ctx.cat.staffing || '—') + '</p></div></div>';
+  }
+  function renderPlaybook(ctx) {
+    var f = ZIP.computeFunnel({ industry: ctx.cat, households: ctx.demo.households, income: ctx.demo.income, nearbyCompetitors: ctx.N });
+    var summary = verdict(f.verdict === 'GO' ? 'go' : 'no', esc(ctx.cat.label) + ' in ' + esc(ctx.place) + ': ' + f.verdict,
+      'Expected owner take-home ' + money(f.expAfter) + ' after tax. Here’s how to open and run it.');
+    var detail = playbookScore(ctx, f) + playbookLists(ctx) +
+      '<h4 class="sub">The money to plan around</h4>' + tiles([
+        ['Revenue to clear target', money(f.goRevenue), '', 'your break-even wage line'],
+        ['Marketing budget', money(f.marketingBudget), '', 'typical for this format'],
+        ['Prudent loan ceiling', money(f.loanCeiling), '', 'what the cash flow supports'],
+        ['Year-1 owner take', money(f.y1OwnerAfter), '', 'while you ramp']
+      ]) + srcline(ctx.cat);
+    return { title: 'The Launch Playbook · ' + esc(ctx.cat.label), summary: summary, detail: detail };
+  }
+
+  function renderDecision(ctx) {
+    var f = ZIP.computeFunnel({ industry: ctx.cat, households: ctx.demo.households, income: ctx.demo.income, nearbyCompetitors: ctx.N });
+    var go = f.verdict === 'GO';
+    var summary = verdict(go ? 'go' : 'no', f.verdict + ' — owner take-home ' + money(f.expAfter),
+      esc(ctx.cat.label) + ' in ' + esc(ctx.place) + ', after tax, vs the $80,000 target · clears in ' + pct(f.pGo) + ' of scenarios.');
+    var detail = '<h4 class="sub">How demand narrows to money</h4>' + funnelBars(f) +
+      '<h4 class="sub">The three scenarios</h4>' + scenarioTable(f, f.targetAfterTax) +
+      '<h4 class="sub">The numbers that matter</h4>' + tiles([
+        ['Revenue to clear target', money(f.goRevenue), '', 'break-even on the owner wage'],
+        ['Year-1 owner take', money(f.y1OwnerAfter), '', 'while you ramp'],
+        ['Prudent loan ceiling', money(f.loanCeiling), '', 'what cash flow can carry'],
+        ['Startup range', money(f.startup[0]) + '–' + money(f.startup[1]), '', 'typical buildout']
+      ]) +
+      callout('<b>The verdict, plainly.</b> A competent operator clears the $80k line here in <b>' + pct(f.pGo) +
+        '</b> of the weighted scenarios' + (go ? ', and the expected outcome beats the target. This is a go as modeled.' :
+          '. The expected outcome falls short — a denser ZIP, fewer rivals, or a higher-margin format is what changes this.') + '</p>') +
+      srcline(ctx.cat);
+    return { title: 'The Decision Report · ' + esc(ctx.cat.label), summary: summary, detail: detail };
+  }
+
+  function renderComplete(ctx) {
+    var kyc = renderKYC(ctx), comp = renderCompetition(ctx), scan = renderTownScan(ctx),
+      dec = renderDecision(ctx), play = renderPlaybook(ctx);
+    function section(n, title, r) { return '<div class="csec"><div class="csec-h"><span class="csec-n">' + n + '</span>' + title + '</div>' + r.summary + r.detail + '</div>'; }
+    var f = ZIP.computeFunnel({ industry: ctx.cat, households: ctx.demo.households, income: ctx.demo.income, nearbyCompetitors: ctx.N });
+    var summary = verdict(f.verdict === 'GO' ? 'go' : 'no', 'Complete Report: ' + esc(ctx.cat.label) + ' in ' + esc(ctx.place),
+      'Verdict ' + f.verdict + ' · owner take-home ' + money(f.expAfter) + ' after tax. Everything below, in one document.');
+    var detail = section('1', 'Who’s in this town', kyc) +
+      section('2', 'What can pay you here', scan) +
+      section('3', 'Your competition', comp) +
+      section('4', 'The financial verdict', dec) +
+      section('5', 'How to run it', play);
+    return { title: 'The Complete Report · ' + esc(ctx.cat.label), summary: summary, detail: detail };
+  }
+
+  /* ---- PRODUCTS ---- */
+  var PRODUCTS = {
+    'know-your-customers': { name: 'Know Your Customers', price: 29, needs: ['zip'], paypal: 'https://www.paypal.com/ncp/payment/FZKBX2JENX7NG', render: renderKYC },
+    'competition': { name: 'Competition Report', price: 19, needs: ['zip', 'business', 'comp'], paypal: 'https://www.paypal.com/ncp/payment/7XJXWVLQXL2DJ', render: renderCompetition },
+    'town-scan': { name: 'The Town Scan', price: 99, needs: ['zip'], paypal: '', render: renderTownScan },
+    'launch-playbook': { name: 'The Launch Playbook', price: 79, needs: ['zip', 'business', 'comp'], paypal: '', render: renderPlaybook },
+    'decision': { name: 'The Decision Report', price: 149, needs: ['zip', 'business', 'comp'], paypal: 'https://www.paypal.com/ncp/payment/5DL2KARKB5WMA', render: renderDecision },
+    'complete': { name: 'The Complete Report', price: 299, needs: ['zip', 'business', 'comp'], paypal: '', render: renderComplete }
+  };
+  window.ZL_PRODUCTS = PRODUCTS;
+
+  /* ---- data source ----
+     Census is fetched SERVER-SIDE via our Netlify function (browsers can't call
+     the Census API directly — it doesn't send CORS headers). On the deployed
+     site this returns live data for the ZIP; if the function isn't reachable
+     (e.g. opening the file locally), we fall back to manual entry. */
+  function fetchDemo(zip) {
+    return fetch('/.netlify/functions/census?zip=' + zip).then(function (r) {
+      return r.json().then(function (d) {
+        if (!r.ok || (d && d.error) || !d || !d.households) throw new Error((d && d.error) || 'lookup failed');
+        return d;
+      });
+    });
+  }
+
+  /* ---- modal controller ---- */
+  var current = null, currentDemo = null;
+
+  function buildBusinessSelect() {
+    var html = '<option value="">Choose a business format…</option>';
+    CAT.sectors.forEach(function (s) {
+      html += '<optgroup label="' + esc(s.sector) + '">';
+      s.items.forEach(function (it) { html += '<option value="' + it.id + '">' + esc(it.label) + '</option>'; });
+      html += '</optgroup>';
+    });
+    return html;
+  }
+
+  window.ZL_open = function (slug) {
+    var p = PRODUCTS[slug]; if (!p) return;
+    current = slug; currentDemo = null;
+    $('zlTitle').textContent = p.name;
+    $('zlPrice').textContent = '$' + p.price;
+    var needB = p.needs.indexOf('business') !== -1, needC = p.needs.indexOf('comp') !== -1;
+    $('zlBusinessWrap').style.display = needB ? '' : 'none';
+    $('zlCompWrap').style.display = needC ? '' : 'none';
+    if (needB && !$('zlBusiness').options.length) $('zlBusiness').innerHTML = buildBusinessSelect();
+    $('zlResult').innerHTML = ''; $('zlResult').classList.remove('show');
+    $('zlErr').className = 'zl-err'; $('zlStatus').textContent = '';
+    $('zlForm').style.display = '';
+    $('zlModal').classList.add('open'); document.body.style.overflow = 'hidden';
+  };
+  window.ZL_close = function () { $('zlModal').classList.remove('open'); document.body.style.overflow = ''; };
+
+  function showErr(m) { var e = $('zlErr'); e.textContent = m || ''; e.className = m ? 'zl-err show' : 'zl-err'; }
+
+  function wireZip() {
+    var zEl = $('zlZip');
+    zEl.addEventListener('blur', function () {
+      var zip = (zEl.value || '').replace(/[^0-9]/g, '').slice(0, 5);
+      if (zip.length !== 5) return;
+      $('zlStatus').textContent = 'Looking up ' + zip + ' from the US Census…';
+      fetchDemo(zip).then(function (d) {
+        currentDemo = d;
+        if (d.households) $('zlHh').value = Math.round(d.households);
+        if (d.income) $('zlInc').value = Math.round(d.income);
+        $('zlStatus').textContent = '✓ Loaded ' + d.place + ' — you can adjust the numbers.';
+      }).catch(function () {
+        currentDemo = null;
+        $('zlStatus').textContent = 'Live lookup unavailable here — on the deployed site this fills in automatically. For now, enter households & median income below (free at data.census.gov).';
+      });
+    });
+  }
+
+  window.ZL_generate = function () {
+    showErr('');
+    var p = PRODUCTS[current];
+    var zip = ($('zlZip').value || '').replace(/[^0-9]/g, '').slice(0, 5);
+    if (zip.length !== 5) return showErr('Enter a 5-digit ZIP code.');
+    var hh = parseFloat(($('zlHh').value || '').replace(/[^0-9.]/g, ''));
+    var inc = parseFloat(($('zlInc').value || '').replace(/[^0-9.]/g, ''));
+    var demo = currentDemo || {};
+    demo = { place: demo.place || ('ZIP ' + zip), population: demo.population, households: isFinite(hh) ? hh : demo.households, income: isFinite(inc) ? inc : demo.income, medianAge: demo.medianAge, medianHome: demo.medianHome, bachPct: demo.bachPct };
+    if (!demo.households || !demo.income) return showErr('Enter households and median income (type a ZIP to auto-fill, or find them free at data.census.gov).');
+    var ctx = { zip: zip, place: demo.place, demo: demo, N: 2 };
+    if (p.needs.indexOf('business') !== -1) {
+      var bid = $('zlBusiness').value;
+      if (!bid) return showErr('Pick a business format.');
+      ctx.cat = CAT.byId[bid];
+    }
+    if (p.needs.indexOf('comp') !== -1) { var c = parseFloat($('zlComp').value); ctx.N = isFinite(c) && c >= 0 ? c : 2; }
+
+    var out;
+    try { out = p.render(ctx); } catch (e) { return showErr('Could not build the report: ' + e.message); }
+    renderResult(p, out);
+  };
+
+  function renderResult(p, out) {
+    var unlocked = isUnlocked(current);
+    var lockZone = unlocked
+      ? '<div class="zl-detail">' + out.detail + '</div>' +
+        '<div class="zl-actions"><button class="zl-btn zl-btn-primary" onclick="ZL_download()">⬇ Download report</button>' +
+        '<button class="zl-btn zl-btn-ghost" onclick="window.print()">Print / Save as PDF</button></div>'
+      : '<div class="zl-lockwrap"><div class="zl-locked">' + out.detail + '</div>' +
+        '<div class="zl-paywall"><div class="zl-pw-card">' +
+        '<div class="zl-pw-h">Unlock the full report</div>' +
+        '<div class="zl-pw-p">You’re seeing the headline. The full breakdown, tables and downloadable report unlock instantly for <b>$' + p.price + '</b>.</div>' +
+        (p.paypal ? '<a class="zl-btn zl-btn-primary" href="' + p.paypal + '" target="_blank" rel="noopener" onclick="ZL_afterPay()">Unlock for $' + p.price + ' →</a>' :
+          '<a class="zl-btn zl-btn-primary" href="#" onclick="alert(\'Payment link coming soon.\');return false;">Unlock for $' + p.price + ' →</a>') +
+        '<button class="zl-reveal" onclick="ZL_reveal()">I’ve paid — reveal my report</button>' +
+        '<div class="zl-pw-note">Useful, or your money back. Delivered on screen &amp; as a download — no waiting, no email.</div>' +
+        '</div></div></div>';
+    window.__zl_last = out;
+    $('zlForm').style.display = 'none';
+    $('zlResult').innerHTML = '<button class="zl-back" onclick="ZL_backToForm()">← Change inputs</button>' +
+      '<div id="zlReport"><h2 class="zl-rt">' + out.title + '</h2>' + out.summary + lockZone + '</div>';
+    $('zlResult').classList.add('show');
+    $('zlResult').scrollTop = 0;
+  }
+  window.ZL_backToForm = function () { $('zlResult').classList.remove('show'); $('zlResult').innerHTML = ''; $('zlForm').style.display = ''; };
+  window.ZL_afterPay = function () { /* PayPal opens in a new tab; buyer clicks reveal on return */ };
+  window.ZL_reveal = function () { markUnlocked(current); ZL_generate(); };
+
+  window.ZL_download = function () {
+    var out = window.__zl_last; if (!out) return;
+    var css = window.ZL_REPORT_CSS || '';
+    var doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+      '<title>' + out.title + '</title><style>' + css + '</style></head><body><div class="doc">' +
+      '<div class="brandbar"><b>Zipsight Lab</b> <span>a Geomarket Insights company · zipsightlab.com</span></div>' +
+      '<h2 class="zl-rt">' + out.title + '</h2>' + out.summary + '<div class="zl-detail">' + out.detail + '</div>' +
+      '<p class="disc">Deterministic estimate from US Census ACS + BLS Consumer Expenditure Survey + published industry ratios, with every assumption shown. Not financial advice or a formal appraisal. © Zipsight Lab.</p>' +
+      '</div></body></html>';
+    var blob = new Blob([doc], { type: 'text/html' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'zipsight-lab-report.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    wireZip();
+    // Auto-reveal on PayPal return (?unlocked=slug)
+    var m = location.search.match(/[?&]unlocked=([a-z-]+)/);
+    if (m && PRODUCTS[m[1]]) { markUnlocked(m[1]); window.ZL_open(m[1]); }
+  });
+})();
+</script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
